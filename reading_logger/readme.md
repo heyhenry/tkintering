@@ -1,0 +1,1 @@
+Simple software to record all mangas/manhuas/manhwas that I will and have read using tkinter.
