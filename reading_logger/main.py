@@ -20,5 +20,10 @@ add_entry_frame.pack()
 notebook.add(home_frame, text='Home')
 notebook.add(add_entry_frame, text='Add Entry')
 
+# home section
+
+
+
+# add entry section
 
 root.mainloop()
