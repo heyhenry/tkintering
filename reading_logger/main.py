@@ -47,6 +47,12 @@ def populate_entries():
     for entry_title in entries:
         entries_lb.insert('end', entry_title)
 
+# retrieve selected entry selected from entries list box
+def get_selected_entry():
+
+    selected_entry = entries[entries_lb.get(entries_lb.curselection())]
+    return selected_entry
+
 # customised way of formating json data
 def custom_serializer(obj):
     if isinstance(obj, Entry):
@@ -136,7 +142,7 @@ populate_entries()
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
 new_entry_btn.grid(row=1, column=1, padx=10)
-update_entry_btn = tk.Button(home_frame, text='Update Entry')
+update_entry_btn = tk.Button(home_frame, text='Update Entry', command=update_entry_popup)
 update_entry_btn.grid(row=2, column=1, padx=10)
 
 
