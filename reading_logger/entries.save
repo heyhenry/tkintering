@@ -16,5 +16,11 @@
         "type": "Autobiography",
         "chapsread": "29",
         "readstat": "On Hold"
+    },
+    "Testing Fire": {
+        "title": "Testing Fire",
+        "type": "Book",
+        "chapsread": "9",
+        "readstat": "Reading"
     }
 }
