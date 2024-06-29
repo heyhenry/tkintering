@@ -4,6 +4,14 @@
 
 import tkinter as tk
 
+# new entry popup function
+def new_entry_popup():
+    new_entry = tk.Toplevel(home_frame, bg='lightyellow')
+    new_entry.title('New Entry')
+    new_entry.geometry('300x300')
+    new_entry_title = tk.Label(new_entry, text='Reading Logger | New Entry', bg='lightyellow')
+    new_entry_title.pack()
+
 # initial tkinter setup
 root = tk.Tk()
 root.title('Reading Logger')
@@ -25,9 +33,10 @@ entries_lb = tk.Listbox(home_frame)
 entries_lb.grid(row=2, column=0)
 
 # right side
-new_entry_btn = tk.Button(home_frame, text='New Entry')
+new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
 new_entry_btn.grid(row=1, column=1, padx=10)
 update_entry_btn = tk.Button(home_frame, text='Update Entry')
 update_entry_btn.grid(row=2, column=1, padx=10)
+
 
 root.mainloop()
