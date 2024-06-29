@@ -36,6 +36,13 @@ def load_entries():
                 entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
                 print(entry_title)
     
+def populate_entries():
+
+    # loads existing entries into entries dictionary
+    load_entries()
+
+    for entry_title in entries:
+        entries_lb.insert('end', entry_title)
 
 # customised way of formating json data
 def custom_serializer(obj):
@@ -54,6 +61,7 @@ def new_entry_popup():
     # new entry function to save new reading entries to json file format
     def new_entry_func():
 
+        # loads existing entries into entries dictionary
         load_entries()
 
         title = ne_title_entry.get()
@@ -120,6 +128,7 @@ entries_lbl.grid(row=1, column=0)
 
 entries_lb = tk.Listbox(home_frame)
 entries_lb.grid(row=2, column=0)
+populate_entries()
 
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
