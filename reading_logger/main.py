@@ -3,6 +3,18 @@
 # centering home title: https://stackoverflow.com/questions/70974175/with-tkinter-grid-method-i-want-to-center-the-labels 
 
 import tkinter as tk
+import json
+import os
+
+class Entry:
+    def __init__(self, title, type, chapsread, readstat):
+        self.title = title
+        self.type = type
+        self.chapsread = chapsread
+        self.readstat = readstat
+
+entries = {}
+
 
 # new entry popup function
 def new_entry_popup():
