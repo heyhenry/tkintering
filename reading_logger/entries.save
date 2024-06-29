@@ -1,8 +1,8 @@
 {
-    "Water Bending": {
-        "title": "Water Bending",
+    "Fire Bending": {
+        "title": "Fire Bending",
         "type": "Manual",
-        "chapsread": "5",
+        "chapsread": "20",
         "readstat": "Reading"
     }
 }

@@ -46,6 +46,8 @@ def new_entry_popup():
         with open('entries.save', 'w') as outfile:
             outfile.write(json_data)
 
+        new_entry.destroy()
+
     new_entry = tk.Toplevel(home_frame, bg='lightyellow')
     new_entry.title('New Entry')
     new_entry.geometry('300x300')
