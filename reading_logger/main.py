@@ -20,6 +20,7 @@ class Entry:
 entries = {}
 storage_filename = 'entries.save'
 
+# read and add existing entries found in save file to entries dictionary
 def load_entries():
 
     # check if file exists
@@ -35,12 +36,14 @@ def load_entries():
             for entry_title, entry_info in entry_data.items():
                 entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
                 print(entry_title)
-    
+
+# fill up entries list box with all existing entries
 def populate_entries():
 
     # loads existing entries into entries dictionary
     load_entries()
 
+    # iterate through the keys found in entries and list them in the list box
     for entry_title in entries:
         entries_lb.insert('end', entry_title)
 
