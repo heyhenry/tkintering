@@ -1,6 +1,8 @@
 # Resources used: 
 # creating listboxes: https://www.geeksforgeeks.org/python-tkinter-listbox-widget/
 # centering home title: https://stackoverflow.com/questions/70974175/with-tkinter-grid-method-i-want-to-center-the-labels 
+# creating a json file: https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/
+
 
 import tkinter as tk
 import json
@@ -15,9 +17,32 @@ class Entry:
 
 entries = {}
 
+def custom_serializer(obj):
+    if isinstance(obj, Entry):
+        return {
+            'title': obj.title, 
+            'type': obj.type,
+            'chapsread': obj.chapsread, 
+            'readstat': obj.readstat
+        }
+    return obj
 
 # new entry popup function
 def new_entry_popup():
+
+    def new_entry_func():
+        title = ne_title_entry.get()
+        type = ne_type_entry.get()
+        chapsread = ne_chapsread_entry.get()
+        readstat = ne_readstat_entry.get()
+
+        entries[title] = Entry(title, type, chapsread, readstat)
+
+        json_data = json.dumps(entries, default=custom_serializer, indent=4)
+
+        with open('entries.save', 'w') as outfile:
+            outfile.write(json_data)
+
     new_entry = tk.Toplevel(home_frame, bg='lightyellow')
     new_entry.title('New Entry')
     new_entry.geometry('300x300')
@@ -27,28 +52,27 @@ def new_entry_popup():
 
     ne_title = tk.Label(new_entry, text='Title:', bg='lightyellow')
     ne_type = tk.Label(new_entry, text='Type:', bg='lightyellow')
-    ne_chapread = tk.Label(new_entry, text='Chapters Read:', bg='lightyellow')
+    ne_chapsread = tk.Label(new_entry, text='Chapters Read:', bg='lightyellow')
     ne_readstat = tk.Label(new_entry, text='Reading Status:', bg='lightyellow')
 
     ne_title_entry = tk.Entry(new_entry)
     ne_type_entry = tk.Entry(new_entry)
-    ne_chapread_entry = tk.Entry(new_entry)
+    ne_chapsread_entry = tk.Entry(new_entry)
     ne_readstat_entry = tk.Entry(new_entry)
 
-    submit_entry = tk.Button(new_entry, text='Add Entry')
+    submit_entry = tk.Button(new_entry, text='Add Entry', command=new_entry_func)
 
     ne_title.grid(row=1, column=0)
     ne_type.grid(row=2, column=0)
-    ne_chapread.grid(row=3, column=0)
+    ne_chapsread.grid(row=3, column=0)
     ne_readstat.grid(row=4, column=0)
 
     ne_title_entry.grid(row=1, column=1)
     ne_type_entry.grid(row=2, column=1)
-    ne_chapread_entry.grid(row=3, column=1)
+    ne_chapsread_entry.grid(row=3, column=1)
     ne_readstat_entry.grid(row=4, column=1)
 
     submit_entry.grid(row=5, columnspan=2)
-
 
 # initial tkinter setup
 root = tk.Tk()
