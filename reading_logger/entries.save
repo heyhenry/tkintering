@@ -1,14 +1,20 @@
 {
-    "asdf": {
-        "title": "asdf",
-        "type": "asdfasdf",
-        "chapsread": "asdfasdfa",
-        "readstat": "asdfasdf"
+    "Water Bending": {
+        "title": "Water Bending",
+        "type": "Manual",
+        "chapsread": "12",
+        "readstat": "Reading"
     },
-    "df": {
-        "title": "df",
-        "type": "sdf",
-        "chapsread": "sdf",
-        "readstat": "23123"
+    "Fire Bending": {
+        "title": "Fire Bending",
+        "type": "Manual",
+        "chapsread": "20",
+        "readstat": "Reading"
+    },
+    "Iroh Beauties": {
+        "title": "Iroh Beauties",
+        "type": "Autobiography",
+        "chapsread": "29",
+        "readstat": "On Hold"
     }
 }

@@ -17,6 +17,9 @@ class Entry:
         self.chapsread = chapsread
         self.readstat = readstat
 
+    # def __str__(self):
+    #     return self.title
+
 entries = {}
 storage_filename = 'entries.save'
 
@@ -35,7 +38,6 @@ def load_entries():
             # populates dictionary entries with existing entries found in json save file
             for entry_title, entry_info in entry_data.items():
                 entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
-                print(entry_title)
 
 # fill up entries list box with all existing entries
 def populate_entries():
@@ -50,7 +52,7 @@ def populate_entries():
 # retrieve selected entry selected from entries list box
 def get_selected_entry():
 
-    selected_entry = entries[entries_lb.get(entries_lb.curselection())]
+    selected_entry = entries_lb.get(entries_lb.curselection())
     return selected_entry
 
 # customised way of formating json data
@@ -117,6 +119,44 @@ def new_entry_popup():
     ne_readstat_entry.grid(row=4, column=1)
 
     submit_entry.grid(row=5, columnspan=2)
+
+def update_entry_popup():
+    
+    entry = get_selected_entry()
+    
+    update_entry = tk.Toplevel(home_frame, bg='lightgreen')
+    update_entry.title('Update Entry')
+    update_entry.geometry('300x300')
+
+    update_entry_title = tk.Label(update_entry, text='Reading Logger | Update Entry', bg='lightgreen')
+    update_entry_title.grid(row=0, columnspan=2)
+
+    ue_title = tk.Label(update_entry, text='Title:', bg='lightgreen')
+    ue_type = tk.Label(update_entry, text='Type:', bg='lightgreen')
+    ue_chapsread = tk.Label(update_entry, text='Chapters Read:', bg='lightgreen')
+    ue_readstat = tk.Label(update_entry, text='Reading Status:', bg='lightgreen')
+
+    ue_title_entry = tk.Entry(update_entry)
+    ue_title_entry.insert(0, entries[entry].title)
+
+    ue_type_entry = tk.Entry(update_entry)
+    ue_type_entry.insert(0, entries[entry].type)
+    
+    ue_chapsread_entry = tk.Entry(update_entry)
+    ue_chapsread_entry.insert(0, entries[entry].chapsread)
+    
+    ue_readstat_entry = tk.Entry(update_entry)
+    ue_readstat_entry.insert(0, entries[entry].readstat)
+
+    ue_title.grid(row=1, column=0)
+    ue_type.grid(row=2, column=0)
+    ue_chapsread.grid(row=3, column=0)
+    ue_readstat.grid(row=4, column=0)
+
+    ue_title_entry.grid(row=1, column=1)
+    ue_type_entry.grid(row=2, column=1)
+    ue_chapsread_entry.grid(row=3, column=1)
+    ue_readstat_entry.grid(row=4, column=1)
 
 # initial tkinter setup
 root = tk.Tk()
