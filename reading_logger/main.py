@@ -105,3 +105,8 @@ update_entry_btn.grid(row=2, column=1, padx=10)
 
 
 root.mainloop()
+
+# TODO NEXT
+# - display entries in listbox
+# - load entries function that saves current json file data and loads it when json file gets updated with new entries
+# - popup to update existing entries based on selected entry in listbox for entries
