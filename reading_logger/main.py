@@ -8,6 +8,7 @@ import tkinter as tk
 import json
 import os
 
+# entry class obj to store each entry
 class Entry:
     def __init__(self, title, type, chapsread, readstat):
         self.title = title
@@ -17,6 +18,7 @@ class Entry:
 
 entries = {}
 
+# customised way of formating json data
 def custom_serializer(obj):
     if isinstance(obj, Entry):
         return {
@@ -27,9 +29,10 @@ def custom_serializer(obj):
         }
     return obj
 
-# new entry popup function
+# new entry popup function to record entries
 def new_entry_popup():
 
+    # new entry function to save new reading entries to json file format
     def new_entry_func():
         title = ne_title_entry.get()
         type = ne_type_entry.get()
