@@ -1,8 +1,14 @@
 {
-    "Fire Bending": {
-        "title": "Fire Bending",
-        "type": "Manual",
-        "chapsread": "20",
-        "readstat": "Reading"
+    "asdf": {
+        "title": "asdf",
+        "type": "asdfasdf",
+        "chapsread": "asdfasdfa",
+        "readstat": "asdfasdf"
+    },
+    "df": {
+        "title": "df",
+        "type": "sdf",
+        "chapsread": "sdf",
+        "readstat": "23123"
     }
 }

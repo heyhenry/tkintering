@@ -2,7 +2,8 @@
 # creating listboxes: https://www.geeksforgeeks.org/python-tkinter-listbox-widget/
 # centering home title: https://stackoverflow.com/questions/70974175/with-tkinter-grid-method-i-want-to-center-the-labels 
 # creating a json file: https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/
-
+# creating custom json serializer: https://howtodoinjava.com/python-json/custom-class-serialization/
+# closing popup window: https://www.geeksforgeeks.org/how-to-close-a-window-in-tkinter/
 
 import tkinter as tk
 import json
@@ -17,6 +18,24 @@ class Entry:
         self.readstat = readstat
 
 entries = {}
+storage_filename = 'entries.save'
+
+def load_entries():
+
+    # check if file exists
+    if os.path.exists(storage_filename):
+
+        # reads file
+        with open(storage_filename, 'r') as file:
+            
+            # loads json file data
+            entry_data = json.load(file)
+            
+            # populates dictionary entries with existing entries found in json save file
+            for entry_title, entry_info in entry_data.items():
+                entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
+                print(entry_title)
+    
 
 # customised way of formating json data
 def custom_serializer(obj):
@@ -34,6 +53,9 @@ def new_entry_popup():
 
     # new entry function to save new reading entries to json file format
     def new_entry_func():
+
+        load_entries()
+
         title = ne_title_entry.get()
         type = ne_type_entry.get()
         chapsread = ne_chapsread_entry.get()
@@ -43,7 +65,7 @@ def new_entry_popup():
 
         json_data = json.dumps(entries, default=custom_serializer, indent=4)
 
-        with open('entries.save', 'w') as outfile:
+        with open(storage_filename, 'w') as outfile:
             outfile.write(json_data)
 
         new_entry.destroy()
