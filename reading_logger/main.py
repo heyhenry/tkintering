@@ -122,6 +122,7 @@ def new_entry_popup():
 
 def update_entry_popup():
     
+    # retrieves selected entry's title for dictionary referencing
     entry = get_selected_entry()
     
     update_entry = tk.Toplevel(home_frame, bg='lightgreen')
@@ -136,6 +137,7 @@ def update_entry_popup():
     ue_chapsread = tk.Label(update_entry, text='Chapters Read:', bg='lightgreen')
     ue_readstat = tk.Label(update_entry, text='Reading Status:', bg='lightgreen')
 
+    # inserting existing data for selected entry
     ue_title_entry = tk.Entry(update_entry)
     ue_title_entry.insert(0, entries[entry].title)
 
