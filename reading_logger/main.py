@@ -23,5 +23,4 @@ entries_lbl.grid(row=1, column=0)
 entries_lb = tk.Listbox(home_frame)
 entries_lb.grid(row=2, column=0)
 
-
 root.mainloop()
