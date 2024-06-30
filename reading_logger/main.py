@@ -55,6 +55,15 @@ def get_selected_entry():
     selected_entry = entries_lb.get(entries_lb.curselection())
     return selected_entry
 
+# delete existing entry
+def delete_entry():
+    
+    global entries
+    selected_entry = get_selected_entry()
+    print(entries)
+    del entries[selected_entry]
+    print(entries)
+
 # customised way of formating json data
 def custom_serializer(obj):
     if isinstance(obj, Entry):
@@ -184,9 +193,12 @@ populate_entries()
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
 new_entry_btn.grid(row=1, column=1, padx=10)
+
 update_entry_btn = tk.Button(home_frame, text='Update Entry', command=update_entry_popup)
 update_entry_btn.grid(row=2, column=1, padx=10)
 
+delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=delete_entry)
+delete_entry_btn.grid(row=2, column=2, padx=10)
 
 root.mainloop()
 

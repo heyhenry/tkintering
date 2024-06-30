@@ -22,5 +22,11 @@
         "type": "Book",
         "chapsread": "9",
         "readstat": "Reading"
+    },
+    "Test Cases": {
+        "title": "Test Cases",
+        "type": "Guide",
+        "chapsread": "200",
+        "readstat": "Completed"
     }
 }
