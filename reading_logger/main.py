@@ -56,19 +56,19 @@ def get_selected_entry():
     selected_entry = entries_lb.get(entries_lb.curselection())
     return selected_entry
 
-# write the entries dictionary to json save file; entries.save
-# def write_entries_to_file():
-
-def del_contents():
-    open(storage_filename, 'w').close()
-
 # delete existing entry
 def delete_entry():
     
-    global entries
     selected_entry = get_selected_entry()
+
+    with open(storage_filename, 'r') as file:
+        entry_data = json.load(file)
+        del entry_data[selected_entry]
     
-    del entries[selected_entry]
+    with open(storage_filename, 'w') as file:
+        json.dump(entry_data, file, indent=4)
+    
+    # del entries[selected_entry]
 
 # customised way of formating json data
 def custom_serializer(obj):
