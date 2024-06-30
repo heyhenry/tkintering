@@ -5,6 +5,7 @@
 # creating custom json serializer: https://howtodoinjava.com/python-json/custom-class-serialization/
 # closing popup window: https://www.geeksforgeeks.org/how-to-close-a-window-in-tkinter/
 # to erase file contents: https://stackoverflow.com/questions/2769061/how-to-erase-the-file-contents-of-text-file-in-python
+# updating json file contents: https://stackoverflow.com/questions/71764921/how-to-delete-an-element-in-a-json-file-python
 
 import tkinter as tk
 import json
@@ -46,6 +47,9 @@ def populate_entries():
     # loads existing entries into entries dictionary
     load_entries()
     
+    # cleans listbox contents aka erases all items
+    entries_lb.delete(0, 'end')
+
     # iterate through the keys found in entries and list them in the list box
     for entry_title in entries:
         entries_lb.insert('end', entry_title)
@@ -71,6 +75,7 @@ def delete_entry():
     with open(storage_filename, 'w') as file:
         json.dump(entry_data, file, indent=4)
     
+    # *** Check if this code is required via test down the line ***
     # deleted entries dictionary alongside file
     del entries[selected_entry]
     print(entries)
@@ -106,6 +111,9 @@ def new_entry_popup():
 
         with open(storage_filename, 'w') as outfile:
             outfile.write(json_data)
+
+        # updates the list of entries showcased in real time
+        populate_entries()
 
         new_entry.destroy()
 
