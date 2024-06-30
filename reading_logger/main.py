@@ -22,7 +22,7 @@ class Entry:
     #     return self.title
 
 entries = {}
-storage_filename = 'entries.save'
+storage_filename = 'entries.json'
 
 # read and add existing entries found in save file to entries dictionary
 def load_entries():
@@ -33,29 +33,22 @@ def load_entries():
         # reads file
         with open(storage_filename, 'r') as file:
 
-            # check raw file to see if it contains content
-            read_content = file.read()
+            # loads json file data
+            entry_data = json.load(file)
 
-            # only load file as json if file content verified to contain content
-            if len(read_content) > 0:
-                # loads json file data
-                entry_data = json.load(file)
-
-                # populates dictionary entries with existing entries found in json save file
-                for entry_title, entry_info in entry_data.items():
-                    entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
+            # populates dictionary entries with existing entries found in json save file
+            for entry_title, entry_info in entry_data.items():
+                entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
 
 # fill up entries list box with all existing entries
 def populate_entries():
 
     # loads existing entries into entries dictionary
     load_entries()
-
-    # checks if entries are populated
-    if len(entries) > 0:
-        # iterate through the keys found in entries and list them in the list box
-        for entry_title in entries:
-            entries_lb.insert('end', entry_title)
+    
+    # iterate through the keys found in entries and list them in the list box
+    for entry_title in entries:
+        entries_lb.insert('end', entry_title)
 
 # retrieve selected entry selected from entries list box
 def get_selected_entry():
@@ -202,7 +195,7 @@ entries_lbl.grid(row=1, column=0)
 entries_lb = tk.Listbox(home_frame)
 entries_lb.grid(row=2, column=0)
          
-    # populate_entries()
+populate_entries()
 
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
