@@ -59,16 +59,21 @@ def get_selected_entry():
 # delete existing entry
 def delete_entry():
     
+    # retrieve selected entry's key
     selected_entry = get_selected_entry()
 
+    # delete selected entry in save file
     with open(storage_filename, 'r') as file:
         entry_data = json.load(file)
         del entry_data[selected_entry]
     
+    # update save file 
     with open(storage_filename, 'w') as file:
         json.dump(entry_data, file, indent=4)
     
-    # del entries[selected_entry]
+    # deleted entries dictionary alongside file
+    del entries[selected_entry]
+    print(entries)
 
 # customised way of formating json data
 def custom_serializer(obj):
