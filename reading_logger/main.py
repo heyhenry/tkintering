@@ -4,6 +4,7 @@
 # creating a json file: https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/
 # creating custom json serializer: https://howtodoinjava.com/python-json/custom-class-serialization/
 # closing popup window: https://www.geeksforgeeks.org/how-to-close-a-window-in-tkinter/
+# to erase file contents: https://stackoverflow.com/questions/2769061/how-to-erase-the-file-contents-of-text-file-in-python
 
 import tkinter as tk
 import json
@@ -55,14 +56,20 @@ def get_selected_entry():
     selected_entry = entries_lb.get(entries_lb.curselection())
     return selected_entry
 
+# write the entries dictionary to json save file; entries.save
+# def write_entries_to_file():
+
+def del_contents():
+    open(storage_filename, 'w').close()
+
 # delete existing entry
 def delete_entry():
     
     global entries
     selected_entry = get_selected_entry()
-    print(entries)
+    
     del entries[selected_entry]
-    print(entries)
+    
 
 # customised way of formating json data
 def custom_serializer(obj):
@@ -197,7 +204,7 @@ new_entry_btn.grid(row=1, column=1, padx=10)
 update_entry_btn = tk.Button(home_frame, text='Update Entry', command=update_entry_popup)
 update_entry_btn.grid(row=2, column=1, padx=10)
 
-delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=delete_entry)
+delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=del_contents)
 delete_entry_btn.grid(row=2, column=2, padx=10)
 
 root.mainloop()
