@@ -32,13 +32,18 @@ def load_entries():
 
         # reads file
         with open(storage_filename, 'r') as file:
-            
-            # loads json file data
-            entry_data = json.load(file)
-            
-            # populates dictionary entries with existing entries found in json save file
-            for entry_title, entry_info in entry_data.items():
-                entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
+
+            # check raw file to see if it contains content
+            read_content = file.read()
+
+            # only load file as json if file content verified to contain content
+            if len(read_content) > 0:
+                # loads json file data
+                entry_data = json.load(file)
+
+                # populates dictionary entries with existing entries found in json save file
+                for entry_title, entry_info in entry_data.items():
+                    entries[entry_title] = Entry(entry_title, entry_info['type'], entry_info['chapsread'], entry_info['readstat'])
 
 # fill up entries list box with all existing entries
 def populate_entries():
@@ -46,9 +51,11 @@ def populate_entries():
     # loads existing entries into entries dictionary
     load_entries()
 
-    # iterate through the keys found in entries and list them in the list box
-    for entry_title in entries:
-        entries_lb.insert('end', entry_title)
+    # checks if entries are populated
+    if len(entries) > 0:
+        # iterate through the keys found in entries and list them in the list box
+        for entry_title in entries:
+            entries_lb.insert('end', entry_title)
 
 # retrieve selected entry selected from entries list box
 def get_selected_entry():
@@ -69,7 +76,6 @@ def delete_entry():
     selected_entry = get_selected_entry()
     
     del entries[selected_entry]
-    
 
 # customised way of formating json data
 def custom_serializer(obj):
@@ -195,7 +201,8 @@ entries_lbl.grid(row=1, column=0)
 
 entries_lb = tk.Listbox(home_frame)
 entries_lb.grid(row=2, column=0)
-populate_entries()
+         
+    # populate_entries()
 
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
@@ -204,7 +211,7 @@ new_entry_btn.grid(row=1, column=1, padx=10)
 update_entry_btn = tk.Button(home_frame, text='Update Entry', command=update_entry_popup)
 update_entry_btn.grid(row=2, column=1, padx=10)
 
-delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=del_contents)
+delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=delete_entry)
 delete_entry_btn.grid(row=2, column=2, padx=10)
 
 root.mainloop()
