@@ -1,38 +1,20 @@
 {
-    "asdfasdf": {
-        "title": "asdfasdf",
-        "type": "asdfasdf",
-        "chapsread": "asdfasdf",
-        "readstat": "asdfasdf"
-    },
-    "jklhjklhjklhjk": {
-        "title": "jklhjklhjklhjk",
-        "type": "lhjk",
-        "chapsread": "hjklhjk",
-        "readstat": "hjkl"
-    },
-    "fghdfbndrbdfg": {
-        "title": "fghdfbndrbdfg",
-        "type": "dfgbdfbsdrtdfgh",
-        "chapsread": "dfg dfgbdrb",
-        "readstat": "dsfgh"
-    },
     "asdf": {
         "title": "asdf",
-        "type": "sdfsdf",
-        "chapsread": "vsd",
-        "readstat": "sdf"
+        "type": "asdf",
+        "chapsread": "asdf",
+        "readstat": "adsf"
     },
-    "whahahata": {
-        "title": "whahahata",
-        "type": "asdfasd",
-        "chapsread": "asdfasdf",
-        "readstat": "asdfasdf"
+    "ITS CHANGED SIR": {
+        "title": "ITS CHANGED SIR",
+        "type": "sss",
+        "chapsread": "ssss",
+        "readstat": "sss"
     },
-    "New Haven": {
-        "title": "New Haven",
-        "type": "Magazine",
-        "chapsread": "10",
-        "readstat": "Reading"
+    "newcomer": {
+        "title": "newcomer",
+        "type": "ffff",
+        "chapsread": "MACARONI",
+        "readstat": "ff"
     }
 }

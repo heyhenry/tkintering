@@ -91,6 +91,12 @@ def custom_serializer(obj):
         }
     return obj
 
+# clear json file contents
+def clear_file():
+
+    with open(storage_filename, 'w') as file:
+        file.write('{}')
+
 # new entry popup function to record entries
 def new_entry_popup():
 
@@ -150,6 +156,27 @@ def new_entry_popup():
 
 def update_entry_popup():
     
+    def update_entry_func(selected_entry):
+
+        title = ue_title_entry.get()
+        type = ue_type_entry.get()
+        chapsread = ue_chapsread_entry.get()
+        readstat = ue_readstat_entry.get()
+
+        clear_file()
+
+        del entries[selected_entry]
+        
+        entries[title] = Entry(title, type, chapsread, readstat)
+
+        json_data = json.dumps(entries, default=custom_serializer, indent=4)
+
+        with open(storage_filename, 'w') as outfile:
+            outfile.write(json_data)
+
+        populate_entries()
+        update_entry.destroy()
+
     # retrieves selected entry's title for dictionary referencing
     entry = get_selected_entry()
     
@@ -167,18 +194,18 @@ def update_entry_popup():
 
     # inserting existing data for selected entry
     ue_title_entry = tk.Entry(update_entry)
-    ue_title_entry.insert(0, entries[entry].title)
+    ue_title_entry.insert('end', entries[entry].title)
 
     ue_type_entry = tk.Entry(update_entry)
-    ue_type_entry.insert(0, entries[entry].type)
+    ue_type_entry.insert('end', entries[entry].type)
     
     ue_chapsread_entry = tk.Entry(update_entry)
-    ue_chapsread_entry.insert(0, entries[entry].chapsread)
+    ue_chapsread_entry.insert('end', entries[entry].chapsread)
     
     ue_readstat_entry = tk.Entry(update_entry)
-    ue_readstat_entry.insert(0, entries[entry].readstat)
+    ue_readstat_entry.insert('end', entries[entry].readstat)
 
-    ue_update_btn = tk.Button(update_entry, text='Update Entry')
+    ue_update_btn = tk.Button(update_entry, text='Update Entry', command=lambda:update_entry_func(entry))
 
     ue_title.grid(row=1, column=0)
     ue_type.grid(row=2, column=0)
