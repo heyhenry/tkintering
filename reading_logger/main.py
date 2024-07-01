@@ -264,5 +264,4 @@ delete_entry_btn.grid(row=2, column=2, padx=10)
 root.mainloop()
 
 # TODO NEXT
-# - popup to update existing entries based on selected entry in listbox for entries
-# - save new updated entry in lieu of existing entry
+# Design
