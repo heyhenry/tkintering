@@ -272,3 +272,4 @@ root.mainloop()
 # 1.1 font, redesigning new entry pop-up
 # 1.2 font, redesigning update entry pop-up
 # 2. Creating a pop-up detailing information about selected entry for viewing only
+# 3. Adding a stats section to the home page or separate pop-up
