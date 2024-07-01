@@ -247,19 +247,19 @@ entries_lbl = tk.Label(home_frame, text='Entries', bg='lightblue')
 entries_lbl.grid(row=1, column=0)
 
 entries_lb = tk.Listbox(home_frame)
-entries_lb.grid(row=2, column=0)
+entries_lb.grid(rowspan=3, column=0)
          
 populate_entries()
 
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
-new_entry_btn.grid(row=1, column=1, padx=10)
+new_entry_btn.grid(row=2, column=1, padx=10)
 
 update_entry_btn = tk.Button(home_frame, text='Update Entry', command=update_entry_popup)
-update_entry_btn.grid(row=2, column=1, padx=10)
+update_entry_btn.grid(row=3, column=1, padx=10)
 
 delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=delete_entry)
-delete_entry_btn.grid(row=2, column=2, padx=10)
+delete_entry_btn.grid(row=4, column=1, padx=10)
 
 root.mainloop()
 
