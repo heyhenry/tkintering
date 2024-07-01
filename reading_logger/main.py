@@ -268,4 +268,7 @@ delete_entry_btn.grid(row=4, column=1, padx=10)
 root.mainloop()
 
 # TODO NEXT
-# Design
+# 1. Continous design/UI improvement
+# 1.1 font, redesigning new entry pop-up
+# 1.2 font, redesigning update entry pop-up
+# 2. Creating a pop-up detailing information about selected entry for viewing only
