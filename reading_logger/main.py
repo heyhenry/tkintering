@@ -178,6 +178,8 @@ def update_entry_popup():
     ue_readstat_entry = tk.Entry(update_entry)
     ue_readstat_entry.insert(0, entries[entry].readstat)
 
+    ue_update_btn = tk.Button(update_entry, text='Update Entry')
+
     ue_title.grid(row=1, column=0)
     ue_type.grid(row=2, column=0)
     ue_chapsread.grid(row=3, column=0)
@@ -187,6 +189,8 @@ def update_entry_popup():
     ue_type_entry.grid(row=2, column=1)
     ue_chapsread_entry.grid(row=3, column=1)
     ue_readstat_entry.grid(row=4, column=1)
+
+    ue_update_btn.grid(row=5, columnspan=2, padx=10, pady=10)
 
 # initial tkinter setup
 root = tk.Tk()
@@ -225,4 +229,3 @@ root.mainloop()
 # TODO NEXT
 # - popup to update existing entries based on selected entry in listbox for entries
 # - save new updated entry in lieu of existing entry
-# - dynamically update listbox after adding new entry/ updating entry

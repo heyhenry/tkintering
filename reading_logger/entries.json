@@ -28,5 +28,11 @@
         "type": "asdfasd",
         "chapsread": "asdfasdf",
         "readstat": "asdfasdf"
+    },
+    "New Haven": {
+        "title": "New Haven",
+        "type": "Magazine",
+        "chapsread": "10",
+        "readstat": "Reading"
     }
 }
