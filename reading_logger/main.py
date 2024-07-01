@@ -241,19 +241,19 @@ home_frame = tk.Frame(root, bg='lightblue')
 home_frame.pack(expand=True, fill='both')
 
 # center (to be done)
-home_title = tk.Label(home_frame, text='Reading Logger | Home', bg='lightblue')
-home_title.grid(row=0, columnspan=2)
+home_title = tk.Label(home_frame, text='Reading Logger | Home', bg='lightblue', font=('Maven Pro Black', 16))
+home_title.grid(row=0, columnspan=2, pady=(10, 0))
 
 # left side
-entries_lbl = tk.Label(home_frame, text='Entries', bg='lightblue')
-entries_lbl.grid(row=1, column=0)
+entries_lbl = tk.Label(home_frame, text='Entries', bg='lightblue', font=('Maven Pro Black', 13))
+entries_lbl.grid(row=1, column=0, pady=(0, 10))
 
 entries_lb = tk.Listbox(home_frame)
-entries_lb.grid(rowspan=3, column=0)
+entries_lb.grid(rowspan=3, column=0, padx=15)
          
 populate_entries()
 
-btn_params = {'height': 1, 'width': 15}
+btn_params = {'height': 1, 'width': 15, 'font': ('Maven Pro Black', 10)}
 
 # right side
 new_entry_btn = tk.Button(home_frame, text='New Entry', **btn_params, command=new_entry_popup)
