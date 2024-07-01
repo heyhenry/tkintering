@@ -154,27 +154,37 @@ def new_entry_popup():
 
     submit_entry.grid(row=5, columnspan=2)
 
+# updates existing entry
 def update_entry_popup():
     
     def update_entry_func(selected_entry):
 
+        # retrieves updated info about selected entry
         title = ue_title_entry.get()
         type = ue_type_entry.get()
         chapsread = ue_chapsread_entry.get()
         readstat = ue_readstat_entry.get()
 
+        # clears whole json file
         clear_file()
 
+        # deletes the currently selected entry
         del entries[selected_entry]
-        
+
+        # creates and adds the new entry aka updated entry
         entries[title] = Entry(title, type, chapsread, readstat)
 
+        # creates the json structure for entries
         json_data = json.dumps(entries, default=custom_serializer, indent=4)
 
+        # writes the json data into the save file aka entries.json
         with open(storage_filename, 'w') as outfile:
             outfile.write(json_data)
 
+        # updates entries list show on home page
         populate_entries()
+
+        # closes update entry pop-up
         update_entry.destroy()
 
     # retrieves selected entry's title for dictionary referencing
