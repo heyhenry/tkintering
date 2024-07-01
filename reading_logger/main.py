@@ -229,6 +229,8 @@ def update_entry_popup():
 
     ue_update_btn.grid(row=5, columnspan=2, padx=10, pady=10)
 
+
+
 # initial tkinter setup
 root = tk.Tk()
 root.title('Reading Logger')
@@ -251,14 +253,16 @@ entries_lb.grid(rowspan=3, column=0)
          
 populate_entries()
 
+btn_params = {'height': 1, 'width': 15}
+
 # right side
-new_entry_btn = tk.Button(home_frame, text='New Entry', command=new_entry_popup)
+new_entry_btn = tk.Button(home_frame, text='New Entry', **btn_params, command=new_entry_popup)
 new_entry_btn.grid(row=2, column=1, padx=10)
 
-update_entry_btn = tk.Button(home_frame, text='Update Entry', command=update_entry_popup)
+update_entry_btn = tk.Button(home_frame, text='Update Entry', **btn_params, command=update_entry_popup)
 update_entry_btn.grid(row=3, column=1, padx=10)
 
-delete_entry_btn = tk.Button(home_frame, text='Delete Entry', command=delete_entry)
+delete_entry_btn = tk.Button(home_frame, text='Delete Entry', **btn_params, command=delete_entry)
 delete_entry_btn.grid(row=4, column=1, padx=10)
 
 root.mainloop()
