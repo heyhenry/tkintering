@@ -5,16 +5,16 @@
         "chapsread": "ssss",
         "readstat": "sss"
     },
-    "newcomer": {
-        "title": "newcomer",
-        "type": "ffff",
-        "chapsread": "MACARONI",
-        "readstat": "ff"
+    "Marcs Guide": {
+        "title": "Marcs Guide",
+        "type": "Guide",
+        "chapsread": "21",
+        "readstat": "Reading"
     },
-    "asdf": {
-        "title": "asdf",
-        "type": "asdf",
-        "chapsread": "asdf",
-        "readstat": "adsf"
+    "LateComer": {
+        "title": "LateComer",
+        "type": "ffff",
+        "chapsread": "HAZA",
+        "readstat": "ff"
     }
 }

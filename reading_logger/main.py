@@ -234,7 +234,7 @@ def update_entry_popup():
 # initial tkinter setup
 root = tk.Tk()
 root.title('Reading Logger')
-root.geometry('300x300')
+# root.geometry('300x300')
 
 # home
 home_frame = tk.Frame(root, bg='lightblue')
@@ -265,9 +265,16 @@ update_entry_btn.grid(row=3, column=1, padx=10)
 delete_entry_btn = tk.Button(home_frame, text='Delete Entry', **btn_params, command=delete_entry)
 delete_entry_btn.grid(row=4, column=1, padx=10)
 
+# right right side
+
+booksread_lbl = tk.Label(home_frame, text='Books Read:')
+booksread_display = tk.Label(home_frame, text='42 (sample)')
+booksread_lbl.grid(row=2, column=2, padx=(10, 0))
+booksread_display.grid(row=2, column=3, padx=(0, 10))
+
 root.mainloop()
 
-# TODO NEXT
+# TODO NEXT (No Particular Order)
 # 1. Continous design/UI improvement
 # 1.1 font, redesigning new entry pop-up
 # 1.2 font, redesigning update entry pop-up
