@@ -46,3 +46,63 @@ books_read.grid(row=2, column=0)
 books_read_num.grid(row=2, column=1)
 
 root.mainloop()
+
+import tkinter as tk
+
+root = tk.Tk()
+root.title('GUI Layout Example')
+
+# # Main frames
+# top_center_frame = tk.Frame(root)
+# top_center_frame.grid(row=0, column=0, columnspan=3, sticky="ew")
+
+# left_frame = tk.Frame(root, width=200, height=300, bg='green')
+# left_frame.grid(row=1, column=0, sticky="nsew")
+
+# middle_frame = tk.Frame(root, width=200, height=300, bg='yellow')
+# middle_frame.grid(row=1, column=1, sticky="nsew")
+
+# right_frame = tk.Frame(root, width=200, height=300, bg='blue')
+# right_frame.grid(row=1, column=2, sticky="nsew")
+
+# # Widgets in top_center_frame
+# top_label = tk.Label(top_center_frame, text='Top Center Frame')
+# top_label.pack(fill='x', padx=10, pady=10)
+
+# # Widgets in left_frame
+# listbox = tk.Listbox(left_frame)
+# listbox.pack(padx=10, pady=10, fill='both', expand=True)
+
+# # Widgets in middle_frame
+# middle_buttons = [
+#     tk.Button(middle_frame, text='Button 1'),
+#     tk.Button(middle_frame, text='Button 2'),
+#     tk.Button(middle_frame, text='Button 3')
+# ]
+
+# for i, button in enumerate(middle_buttons):
+#     button.grid(row=i, column=0, padx=10, pady=10, sticky="ew")
+
+# # Configure column weight for middle_frame to evenly distribute space
+# middle_frame.columnconfigure(0, weight=1)
+
+# # Widgets in right_frame
+# right_buttons = [
+#     tk.Button(right_frame, text='Button A'),
+#     tk.Button(right_frame, text='Button B'),
+#     tk.Button(right_frame, text='Button C')
+# ]
+
+# for i, button in enumerate(right_buttons):
+#     button.grid(row=i, column=0, padx=10, pady=10, sticky="ew")
+
+# # Configure column weight for right_frame to evenly distribute space
+# right_frame.columnconfigure(0, weight=1)
+
+# # Configure row and column weights for root to make frames resizeable
+# root.grid_rowconfigure(1, weight=1)
+# root.grid_columnconfigure(0, weight=1)
+# root.grid_columnconfigure(1, weight=1)
+# root.grid_columnconfigure(2, weight=1)
+
+# root.mainloop()
