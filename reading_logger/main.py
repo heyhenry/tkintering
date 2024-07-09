@@ -82,6 +82,9 @@ def delete_entry():
     # deleted entries dictionary alongside file
     del entries[selected_entry]
 
+    # updates the display listbox in realtime
+    populate_entries()
+
 # customised way of formating json data
 def custom_serializer(obj):
     if isinstance(obj, Entry):
