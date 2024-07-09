@@ -329,6 +329,9 @@ recom_three.grid(row=5, column=2, pady=10)
 root.mainloop()
 
 # TODO NEXT (No Particular Order)
+
+# prioritise: continue to work on reading status count and link to stats labels
+
 # 1. Continous design/UI improvement
 # 1.1 font, redesigning new entry pop-up
 # 1.2 font, redesigning update entry pop-up
