@@ -5,28 +5,10 @@
         "chapsread": "21",
         "readstat": "reading"
     },
-    "pookie adventures": {
-        "title": "pookie adventures",
-        "type": "comic",
-        "chapsread": "10",
-        "readstat": "reading"
-    },
     "dead": {
         "title": "dead",
         "type": "book",
         "chapsread": "21",
-        "readstat": "reading"
-    },
-    "aya": {
-        "title": "aya",
-        "type": "comic",
-        "chapsread": "12",
-        "readstat": "to read"
-    },
-    "hehehheeh": {
-        "title": "hehehheeh",
-        "type": "insanity realls",
-        "chapsread": "102",
         "readstat": "reading"
     },
     "wegotthsi": {
@@ -52,5 +34,29 @@
         "type": "comic",
         "chapsread": "10",
         "readstat": "read"
+    },
+    "Waluweegi": {
+        "title": "Waluweegi",
+        "type": "Comic",
+        "chapsread": "100",
+        "readstat": "read"
+    },
+    "hehehheeh": {
+        "title": "hehehheeh",
+        "type": "insanity realls",
+        "chapsread": "102",
+        "readstat": "read"
+    },
+    "aya": {
+        "title": "aya",
+        "type": "comic",
+        "chapsread": "12",
+        "readstat": "read"
+    },
+    "pookie adventures": {
+        "title": "pookie adventures",
+        "type": "comic",
+        "chapsread": "10",
+        "readstat": "to read"
     }
 }

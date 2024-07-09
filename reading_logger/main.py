@@ -82,6 +82,9 @@ def delete_entry():
     # deleted entries dictionary alongside file
     del entries[selected_entry]
 
+    # updates reading stats
+    updates_stats()
+
     # updates the display listbox in realtime
     populate_entries()
 
@@ -191,6 +194,9 @@ def update_entry_popup():
         # updates entries list show on home page
         populate_entries()
 
+        # updates reading stats
+        updates_stats()
+
         # closes update entry pop-up
         update_entry.destroy()
 
@@ -258,6 +264,8 @@ def load_stats():
             stats['toread'] += 1
         elif entries[entry].readstat == 'read':
             stats['read'] += 1
+
+    # updates reading stats display
     stat_reading.set(stats['reading'])
     stat_toread.set(stats['toread'])
     stat_read.set(stats['read'])
@@ -276,6 +284,11 @@ def updates_stats():
             stats['toread'] += 1
         elif entries[entry].readstat == 'read':
             stats['read'] += 1
+    
+    # updates reading stats display
+    stat_reading.set(stats['reading'])
+    stat_toread.set(stats['toread'])
+    stat_read.set(stats['read'])
 
 # initial tkinter setup
 root = tk.Tk()
