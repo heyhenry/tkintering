@@ -272,6 +272,16 @@ booksread_display = tk.Label(home_frame, text='42 (sample)')
 booksread_lbl.grid(row=2, column=2, padx=(10, 0))
 booksread_display.grid(row=2, column=3, padx=(0, 10))
 
+# bottom 
+
+recom_one = tk.Button(home_frame, text='MyAnimeList')
+recom_two = tk.Button(home_frame, text='Good Reads')
+recom_three = tk.Button(home_frame, text='AniList')
+
+recom_one.grid(row=5, column=0, pady=10)
+recom_two.grid(row=5, column=1, pady=10)
+recom_three.grid(row=5, column=2, pady=10)
+
 root.mainloop()
 
 # TODO NEXT (No Particular Order)
