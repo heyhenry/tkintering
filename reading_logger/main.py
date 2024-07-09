@@ -26,6 +26,7 @@ class Entry:
 
 entries = {}
 storage_filename = 'entries.json'
+stats = {'reading': 0, 'read': 0, 'toread': 0}
 
 # read and add existing entries found in save file to entries dictionary
 def load_entries():
@@ -231,12 +232,15 @@ def update_entry_popup():
 
     ue_update_btn.grid(row=5, columnspan=2, padx=10, pady=10)
 
+# redirects and opens myanimelist site
 def redirect_mal():
     webbrowser.open('https://myanimelist.net/anime.php')
 
+# redirects and opens good reads site
 def redirect_goodreads():
     webbrowser.open('https://www.goodreads.com/')
 
+# redirects and opens anilist site
 def redirect_anilist():
     webbrowser.open('https://anilist.co/search/anime')
 
