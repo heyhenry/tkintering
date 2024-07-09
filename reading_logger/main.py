@@ -254,7 +254,7 @@ home_frame.pack(expand=True, fill='both')
 home_title = tk.Label(home_frame, text='Reading Logger | Home', bg='lightblue', font=('Maven Pro Black', 16))
 home_title.grid(row=0, columnspan=2, pady=(10, 0))
 
-# left side
+# left 
 entries_lbl = tk.Label(home_frame, text='Entries', bg='lightblue', font=('Maven Pro Black', 13))
 entries_lbl.grid(row=1, column=0, pady=(0, 10))
 
@@ -265,7 +265,7 @@ populate_entries()
 
 btn_params = {'height': 1, 'width': 15, 'font': ('Maven Pro Black', 10)}
 
-# right side
+# middle
 new_entry_btn = tk.Button(home_frame, text='New Entry', **btn_params, command=new_entry_popup)
 new_entry_btn.grid(row=2, column=1, padx=10)
 
@@ -275,12 +275,22 @@ update_entry_btn.grid(row=3, column=1, padx=10)
 delete_entry_btn = tk.Button(home_frame, text='Delete Entry', **btn_params, command=delete_entry)
 delete_entry_btn.grid(row=4, column=1, padx=10)
 
-# right right side
+# right
+
+booksreading_lbl = tk.Label(home_frame, text='Books Reading:')
+booksreading_display = tk.Label(home_frame, text='ex. 42')
+booksreading_lbl.grid(row=2, column=2, padx=(10, 0))
+booksreading_display.grid(row=2, column=3, padx=(0, 10))
 
 booksread_lbl = tk.Label(home_frame, text='Books Read:')
-booksread_display = tk.Label(home_frame, text='42 (sample)')
-booksread_lbl.grid(row=2, column=2, padx=(10, 0))
-booksread_display.grid(row=2, column=3, padx=(0, 10))
+booksread_display = tk.Label(home_frame, text='ex. 13')
+booksread_lbl.grid(row=3, column=2, padx=(10, 0))
+booksread_display.grid(row=3, column=3, padx=(0, 10))
+
+bookstoread_lbl = tk.Label(home_frame, text='Books to Read:')
+bookstoread_display = tk.Label(home_frame, text='ex. 108')
+bookstoread_lbl.grid(row=4, column=2, padx=(10, 0))
+bookstoread_display.grid(row=4, column=3, padx=(0, 10))
 
 # bottom 
 
