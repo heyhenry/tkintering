@@ -81,7 +81,6 @@ def delete_entry():
     # *** Check if this code is required via test down the line ***
     # deleted entries dictionary alongside file
     del entries[selected_entry]
-    print(entries)
 
 # customised way of formating json data
 def custom_serializer(obj):
@@ -244,6 +243,15 @@ def redirect_goodreads():
 def redirect_anilist():
     webbrowser.open('https://anilist.co/search/anime')
 
+def updates_stats():
+    stats.clear()
+    for entry in entries.keys():
+        if entries[entry]['readstat'] == 'reading':
+            stats['read'] += 1
+        elif entries[entry]['readstat'] == 'to read':
+            stats['toread'] += 1
+        elif entries[entry]['readstat'] == 'read':
+            stats['read'] += 1
 
 # initial tkinter setup
 root = tk.Tk()
