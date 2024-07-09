@@ -1,1 +1,56 @@
-{}
+{
+    "saga lives": {
+        "title": "saga lives",
+        "type": "Magazine",
+        "chapsread": "21",
+        "readstat": "reading"
+    },
+    "pookie adventures": {
+        "title": "pookie adventures",
+        "type": "comic",
+        "chapsread": "10",
+        "readstat": "reading"
+    },
+    "dead": {
+        "title": "dead",
+        "type": "book",
+        "chapsread": "21",
+        "readstat": "reading"
+    },
+    "aya": {
+        "title": "aya",
+        "type": "comic",
+        "chapsread": "12",
+        "readstat": "to read"
+    },
+    "plsnomore": {
+        "title": "plsnomore",
+        "type": "comic",
+        "chapsread": "10",
+        "readstat": "reading"
+    },
+    "hehehheeh": {
+        "title": "hehehheeh",
+        "type": "insanity realls",
+        "chapsread": "102",
+        "readstat": "reading"
+    },
+    "wegotthsi": {
+        "title": "wegotthsi",
+        "type": "guide",
+        "chapsread": "1021",
+        "readstat": "reading"
+    },
+    "yeppers": {
+        "title": "yeppers",
+        "type": "guide",
+        "chapsread": "10",
+        "readstat": "reading"
+    },
+    "icantdothisnomore": {
+        "title": "icantdothisnomore",
+        "type": "poem",
+        "chapsread": "1002",
+        "readstat": "read"
+    }
+}

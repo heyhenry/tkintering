@@ -126,6 +126,8 @@ def new_entry_popup():
         # updates the list of entries showcased in real time
         populate_entries()
 
+        updates_stats()
+
         new_entry.destroy()
 
     new_entry = tk.Toplevel(home_frame, bg='lightyellow')
@@ -247,14 +249,22 @@ def redirect_anilist():
     webbrowser.open('https://anilist.co/search/anime')
 
 def updates_stats():
-    stats.clear()
+
+    # cleans stats dictionary
+    stats = {'reading': 0, 'read': 0, 'toread': 0}
+
+    # determines key counts for reading status of entries
     for entry in entries.keys():
-        if entries[entry]['readstat'] == 'reading':
-            stats['read'] += 1
-        elif entries[entry]['readstat'] == 'to read':
+        if entries[entry].readstat == 'reading':
+            stats['reading'] += 1
+        elif entries[entry].readstat == 'to read':
             stats['toread'] += 1
-        elif entries[entry]['readstat'] == 'read':
+        elif entries[entry].readstat == 'read':
             stats['read'] += 1
+
+    # logger
+    print(entries)
+    print(stats)
 
 # initial tkinter setup
 root = tk.Tk()
@@ -308,7 +318,6 @@ bookstoread_lbl.grid(row=4, column=2, padx=(10, 0))
 bookstoread_display.grid(row=4, column=3, padx=(0, 10))
 
 # bottom 
-
 recom_one = tk.Button(home_frame, text='MyAnimeList', **btn_params, command=redirect_mal)
 recom_two = tk.Button(home_frame, text='Good Reads', **btn_params, command=redirect_goodreads)
 recom_three = tk.Button(home_frame, text='AniList', **btn_params, command=redirect_anilist)
