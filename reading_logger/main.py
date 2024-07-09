@@ -248,6 +248,7 @@ def redirect_goodreads():
 def redirect_anilist():
     webbrowser.open('https://anilist.co/search/anime')
 
+# loads existing reading stats
 def load_stats():
     load_entries()
     for entry in entries.keys():
@@ -257,6 +258,9 @@ def load_stats():
             stats['toread'] += 1
         elif entries[entry].readstat == 'read':
             stats['read'] += 1
+    stat_reading.set(stats['reading'])
+    stat_toread.set(stats['toread'])
+    stat_read.set(stats['read'])
 
 # updates reading stats
 def updates_stats():
@@ -273,12 +277,14 @@ def updates_stats():
         elif entries[entry].readstat == 'read':
             stats['read'] += 1
 
-    # logger
-    # print(entries)
-    # print(stats)
-
 # initial tkinter setup
 root = tk.Tk()
+
+# initialize reading status variables
+stat_reading = tk.StringVar()
+stat_toread = tk.StringVar()
+stat_read = tk.StringVar()
+
 root.title('Reading Logger')
 # root.geometry('300x300')
 
@@ -317,17 +323,17 @@ delete_entry_btn.grid(row=4, column=1, padx=10)
 # right
 
 booksreading_lbl = tk.Label(home_frame, text='Books Reading:')
-booksreading_display = tk.Label(home_frame, text='0')
+booksreading_display = tk.Label(home_frame, textvariable=stat_reading)
 booksreading_lbl.grid(row=2, column=2, padx=(10, 0))
 booksreading_display.grid(row=2, column=3, padx=(0, 10))
 
-booksread_lbl = tk.Label(home_frame, text='Books Read:')
-booksread_display = tk.Label(home_frame, text='0')
+booksread_lbl = tk.Label(home_frame, text='Books Read:')  
+booksread_display = tk.Label(home_frame, textvariable=stat_read)
 booksread_lbl.grid(row=3, column=2, padx=(10, 0))
 booksread_display.grid(row=3, column=3, padx=(0, 10))
 
 bookstoread_lbl = tk.Label(home_frame, text='Books to Read:')
-bookstoread_display = tk.Label(home_frame, text='0')
+bookstoread_display = tk.Label(home_frame, textvariable=stat_toread)
 bookstoread_lbl.grid(row=4, column=2, padx=(10, 0))
 bookstoread_display.grid(row=4, column=3, padx=(0, 10))
 

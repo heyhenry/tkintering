@@ -23,12 +23,6 @@
         "chapsread": "12",
         "readstat": "to read"
     },
-    "plsnomore": {
-        "title": "plsnomore",
-        "type": "comic",
-        "chapsread": "10",
-        "readstat": "reading"
-    },
     "hehehheeh": {
         "title": "hehehheeh",
         "type": "insanity realls",
@@ -51,6 +45,12 @@
         "title": "icantdothisnomore",
         "type": "poem",
         "chapsread": "1002",
+        "readstat": "read"
+    },
+    "plsnomore": {
+        "title": "plsnomore",
+        "type": "comic",
+        "chapsread": "10",
         "readstat": "read"
     }
 }
