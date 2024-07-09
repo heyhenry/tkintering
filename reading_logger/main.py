@@ -6,10 +6,12 @@
 # closing popup window: https://www.geeksforgeeks.org/how-to-close-a-window-in-tkinter/
 # to erase file contents: https://stackoverflow.com/questions/2769061/how-to-erase-the-file-contents-of-text-file-in-python
 # updating json file contents: https://stackoverflow.com/questions/71764921/how-to-delete-an-element-in-a-json-file-python
+# opening up web browser: https://stackoverflow.com/questions/31715119/how-can-i-open-a-website-in-my-web-browser-using-python
 
 import tkinter as tk
 import json
 import os
+import webbrowser
 
 # entry class obj to store each entry
 class Entry:
@@ -229,6 +231,14 @@ def update_entry_popup():
 
     ue_update_btn.grid(row=5, columnspan=2, padx=10, pady=10)
 
+def redirect_mal():
+    webbrowser.open('https://myanimelist.net/anime.php')
+
+def redirect_goodreads():
+    webbrowser.open('https://www.goodreads.com/')
+
+def redirect_anilist():
+    webbrowser.open('https://anilist.co/search/anime')
 
 
 # initial tkinter setup
@@ -274,9 +284,9 @@ booksread_display.grid(row=2, column=3, padx=(0, 10))
 
 # bottom 
 
-recom_one = tk.Button(home_frame, text='MyAnimeList')
-recom_two = tk.Button(home_frame, text='Good Reads')
-recom_three = tk.Button(home_frame, text='AniList')
+recom_one = tk.Button(home_frame, text='MyAnimeList', **btn_params, command=redirect_mal)
+recom_two = tk.Button(home_frame, text='Good Reads', **btn_params, command=redirect_goodreads)
+recom_three = tk.Button(home_frame, text='AniList', **btn_params, command=redirect_anilist)
 
 recom_one.grid(row=5, column=0, pady=10)
 recom_two.grid(row=5, column=1, pady=10)
