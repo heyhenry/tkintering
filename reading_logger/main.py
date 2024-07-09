@@ -334,7 +334,6 @@ delete_entry_btn = tk.Button(home_frame, text='Delete Entry', **btn_params, comm
 delete_entry_btn.grid(row=4, column=1, padx=10)
 
 # right
-
 booksreading_lbl = tk.Label(home_frame, text='Books Reading:')
 booksreading_display = tk.Label(home_frame, textvariable=stat_reading)
 booksreading_lbl.grid(row=2, column=2, padx=(10, 0))
@@ -363,10 +362,16 @@ root.mainloop()
 
 # TODO NEXT (No Particular Order)
 
-# prioritise: continue to work on reading status count and link to stats labels
+# prioritise: change reading status label font/colours -> change button design to mountainous -> realign existing text
 
 # 1. Continous design/UI improvement
 # 1.1 font, redesigning new entry pop-up
 # 1.2 font, redesigning update entry pop-up
 # 2. Creating a pop-up detailing information about selected entry for viewing only
 # 3. Adding a stats section to the home page or separate pop-up
+# 4. entry input validations / mitigations
+# 4.1 new entry section required
+# 4.2 update entry section required
+
+# to think about
+# changing new entry to add entry
