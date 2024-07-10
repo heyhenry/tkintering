@@ -184,6 +184,7 @@ def new_entry_popup():
     ne_chapsread_entry.grid(row=3, column=1, padx=(0, 10))
     ne_readstat_entry.grid(row=4, column=1, padx=(0, 10))
 
+    # customised drop down menu design
     ne_type_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
     ne_readstat_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
 
@@ -269,6 +270,7 @@ def update_entry_popup():
     ue_chapsread_entry.grid(row=3, column=1, padx=(0, 10))
     ue_readstat_entry.grid(row=4, column=1, padx=(0, 10))
 
+    # customised drop down menu design
     ue_type_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
     ue_readstat_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
 
@@ -399,16 +401,7 @@ root.mainloop()
 
 # TODO NEXT (No Particular Order)
 
-# prioritise: change reading status label font/colours -> change button design to mountainous -> realign existing text
-
-# 1. Continous design/UI improvement
-# 1.1 font, redesigning new entry pop-up
-# 1.2 font, redesigning update entry pop-up
-# 2. Creating a pop-up detailing information about selected entry for viewing only
-# 3. Adding a stats section to the home page or separate pop-up
-# 4. entry input validations / mitigations
-# 4.1 new entry section required
-# 4.2 update entry section required
+# 1. Creating a pop-up detailing information about selected entry for viewing only
 
 # to think about
 # changing new entry to add entry
