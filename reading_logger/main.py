@@ -7,6 +7,7 @@
 # to erase file contents: https://stackoverflow.com/questions/2769061/how-to-erase-the-file-contents-of-text-file-in-python
 # updating json file contents: https://stackoverflow.com/questions/71764921/how-to-delete-an-element-in-a-json-file-python
 # opening up web browser: https://stackoverflow.com/questions/31715119/how-can-i-open-a-website-in-my-web-browser-using-python
+# aligning label texts: https://stackoverflow.com/questions/31140590/how-to-line-left-justify-label-and-entry-boxes-in-tkinter-grid
 
 import tkinter as tk
 import json
@@ -334,20 +335,20 @@ delete_entry_btn = tk.Button(home_frame, text='Delete Entry', **btn_params, comm
 delete_entry_btn.grid(row=4, column=1, padx=10)
 
 # right
-booksreading_lbl = tk.Label(home_frame, text='Books Reading:')
-booksreading_display = tk.Label(home_frame, textvariable=stat_reading)
-booksreading_lbl.grid(row=2, column=2, padx=(10, 0))
-booksreading_display.grid(row=2, column=3, padx=(0, 10))
+booksreading_lbl = tk.Label(home_frame, text='Books Reading:', bg='lightblue', font=('Maven Pro Black', 11))
+booksreading_display = tk.Label(home_frame, textvariable=stat_reading, bg='lightblue', font=('Maven Pro Black', 11))
+booksreading_lbl.grid(row=2, column=2, sticky='w')
+booksreading_display.grid(row=2, column=3, sticky='e', padx=(0, 10))
 
-booksread_lbl = tk.Label(home_frame, text='Books Read:')  
-booksread_display = tk.Label(home_frame, textvariable=stat_read)
-booksread_lbl.grid(row=3, column=2, padx=(10, 0))
-booksread_display.grid(row=3, column=3, padx=(0, 10))
+booksread_lbl = tk.Label(home_frame, text='Books Read:', bg='lightblue', font=('Maven Pro Black', 11))  
+booksread_display = tk.Label(home_frame, textvariable=stat_read, bg='lightblue', font=('Maven Pro Black', 11))
+booksread_lbl.grid(row=3, column=2, sticky='w')
+booksread_display.grid(row=3, column=3, sticky='e', padx=(0, 10))
 
-bookstoread_lbl = tk.Label(home_frame, text='Books to Read:')
-bookstoread_display = tk.Label(home_frame, textvariable=stat_toread)
-bookstoread_lbl.grid(row=4, column=2, padx=(10, 0))
-bookstoread_display.grid(row=4, column=3, padx=(0, 10))
+bookstoread_lbl = tk.Label(home_frame, text='Books to Read:', bg='lightblue', font=('Maven Pro Black', 11))
+bookstoread_display = tk.Label(home_frame, textvariable=stat_toread, bg='lightblue', font=('Maven Pro Black', 11))
+bookstoread_lbl.grid(row=4, column=2, sticky='w')
+bookstoread_display.grid(row=4, column=3, sticky='e', padx=(0, 10))
 
 # bottom 
 recom_one = tk.Button(home_frame, text='MyAnimeList', **btn_params, command=redirect_mal)
