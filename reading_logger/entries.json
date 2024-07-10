@@ -1,4 +1,4 @@
-{       
+{
     "aya": {
         "title": "aya",
         "type": "comic",
@@ -11,16 +11,16 @@
         "chapsread": "10",
         "readstat": "to read"
     },
-    "new adventures": {
-        "title": "new adventures",
-        "type": "magazine",
-        "chapsread": "10",
-        "readstat": "reading"
-    },
     "new adventures 2": {
         "title": "new adventures 2",
         "type": "comic",
         "chapsread": "100",
         "readstat": "to read"
+    },
+    "Mario's War": {
+        "title": "Mario's War",
+        "type": "manga",
+        "chapsread": "100",
+        "readstat": "reading"
     }
 }

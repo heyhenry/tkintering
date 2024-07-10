@@ -124,6 +124,7 @@ def clear_file():
 # new entry popup function to record entries
 def new_entry_popup():
 
+    # drop down variables
     type_clicked = tk.StringVar()
     type_clicked.set('novel')
 
@@ -183,6 +184,9 @@ def new_entry_popup():
     ne_chapsread_entry.grid(row=3, column=1, padx=(0, 10))
     ne_readstat_entry.grid(row=4, column=1, padx=(0, 10))
 
+    ne_type_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
+    ne_readstat_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
+
     submit_entry.grid(row=5, columnspan=2, pady=10)
 
 # updates existing entry
@@ -191,6 +195,7 @@ def update_entry_popup():
     # retrieves selected entry's title for dictionary referencing
     entry = get_selected_entry()
 
+    # drop down variables
     type_clicked = tk.StringVar()
     type_clicked.set(entries[entry].type)
 
@@ -264,6 +269,9 @@ def update_entry_popup():
     ue_chapsread_entry.grid(row=3, column=1, padx=(0, 10))
     ue_readstat_entry.grid(row=4, column=1, padx=(0, 10))
 
+    ue_type_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
+    ue_readstat_entry.config(indicatoron=0, width=12, font=('Maven Pro Black', 10))
+
     ue_update_btn.grid(row=5, columnspan=2, pady=10)
 
 # redirects and opens myanimelist site
@@ -333,20 +341,23 @@ home_frame.pack(expand=True, fill='both')
 
 # center (to be done)
 home_title = tk.Label(home_frame, text='Reading Logger | Home', bg='lightblue', font=('Maven Pro Black', 16))
-home_title.grid(row=0, columnspan=2, pady=(10, 0))
+home_title.grid(row=0, columnspan=3, pady=10)
 
 # left 
 entries_lbl = tk.Label(home_frame, text='Entries', bg='lightblue', font=('Maven Pro Black', 13))
 entries_lbl.grid(row=1, column=0, pady=(0, 10))
 
 entries_lb = tk.Listbox(home_frame)
-entries_lb.grid(rowspan=3, column=0, padx=15)
+entries_lb.grid(rowspan=3, column=0, padx=20)
          
 populate_entries()
 
 btn_params = {'height': 1, 'width': 15, 'font': ('Maven Pro Black', 10)}
 
 # middle
+actions_lbl = tk.Label(home_frame, text='Actions', bg='lightblue', font=('Maven Pro Black', 13))
+actions_lbl.grid(row=1, column=1, pady=(0, 10))
+
 new_entry_btn = tk.Button(home_frame, text='New Entry', **btn_params, command=new_entry_popup)
 new_entry_btn.grid(row=2, column=1, padx=10)
 
@@ -357,29 +368,32 @@ delete_entry_btn = tk.Button(home_frame, text='Delete Entry', **btn_params, comm
 delete_entry_btn.grid(row=4, column=1, padx=10)
 
 # right
+stats_lbl = tk.Label(home_frame, text='Stats', bg='lightblue', font=('Maven Pro Black', 13))
+stats_lbl.grid(row=1, column=2, pady=(0, 10))
+
 booksreading_lbl = tk.Label(home_frame, text='Books Reading:', bg='lightblue', font=('Maven Pro Black', 11))
 booksreading_display = tk.Label(home_frame, textvariable=stat_reading, bg='lightblue', font=('Maven Pro Black', 11))
 booksreading_lbl.grid(row=2, column=2, sticky='w')
-booksreading_display.grid(row=2, column=3, sticky='e', padx=(0, 10))
+booksreading_display.grid(row=2, column=3, sticky='e', padx=(0, 20))
 
 booksread_lbl = tk.Label(home_frame, text='Books Read:', bg='lightblue', font=('Maven Pro Black', 11))  
 booksread_display = tk.Label(home_frame, textvariable=stat_read, bg='lightblue', font=('Maven Pro Black', 11))
 booksread_lbl.grid(row=3, column=2, sticky='w')
-booksread_display.grid(row=3, column=3, sticky='e', padx=(0, 10))
+booksread_display.grid(row=3, column=3, sticky='e', padx=(0, 20))
 
 bookstoread_lbl = tk.Label(home_frame, text='Books to Read:', bg='lightblue', font=('Maven Pro Black', 11))
 bookstoread_display = tk.Label(home_frame, textvariable=stat_toread, bg='lightblue', font=('Maven Pro Black', 11))
 bookstoread_lbl.grid(row=4, column=2, sticky='w')
-bookstoread_display.grid(row=4, column=3, sticky='e', padx=(0, 10))
+bookstoread_display.grid(row=4, column=3, sticky='e', padx=(0, 20))
 
 # bottom 
 recom_one = tk.Button(home_frame, text='MyAnimeList', **btn_params, command=redirect_mal)
 recom_two = tk.Button(home_frame, text='Good Reads', **btn_params, command=redirect_goodreads)
 recom_three = tk.Button(home_frame, text='AniList', **btn_params, command=redirect_anilist)
 
-recom_one.grid(row=5, column=0, pady=10)
-recom_two.grid(row=5, column=1, pady=10)
-recom_three.grid(row=5, column=2, pady=10)
+recom_one.grid(row=5, column=0, pady=20)
+recom_two.grid(row=5, column=1, pady=20)
+recom_three.grid(row=5, column=2, pady=20)
 
 root.mainloop()
 
