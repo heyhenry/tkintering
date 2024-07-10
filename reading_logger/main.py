@@ -8,6 +8,7 @@
 # updating json file contents: https://stackoverflow.com/questions/71764921/how-to-delete-an-element-in-a-json-file-python
 # opening up web browser: https://stackoverflow.com/questions/31715119/how-can-i-open-a-website-in-my-web-browser-using-python
 # aligning label texts: https://stackoverflow.com/questions/31140590/how-to-line-left-justify-label-and-entry-boxes-in-tkinter-grid
+# dropdown tkinter: https://www.geeksforgeeks.org/dropdown-menus-tkinter/
 
 import tkinter as tk
 import json
@@ -41,20 +42,6 @@ status_options = [
     'to read',
     'reading',
     'read'
-]
-
-rating_options = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10
 ]
 
 # read and add existing entries found in save file to entries dictionary
@@ -170,7 +157,6 @@ def new_entry_popup():
 
     new_entry = tk.Toplevel(home_frame, bg='lightyellow')
     new_entry.title('New Entry')
-    # new_entry.geometry('300x300')
     
     new_entry_title = tk.Label(new_entry, text='Reading Logger | New Entry', bg='lightyellow', font=('Maven Pro Black', 16))
     new_entry_title.grid(row=0, columnspan=2, pady=(0, 10), padx=10)
@@ -181,7 +167,6 @@ def new_entry_popup():
     ne_readstat = tk.Label(new_entry, text='Reading Status:', bg='lightyellow', font=('Maven Pro Black', 13))
 
     ne_title_entry = tk.Entry(new_entry)
-    # ne_type_entry = tk.Entry(new_entry)
     ne_type_entry = tk.OptionMenu(new_entry, type_clicked, *type_options)
     ne_chapsread_entry = tk.Entry(new_entry)
     ne_readstat_entry = tk.OptionMenu(new_entry, status_clicked, *status_options)
@@ -203,13 +188,22 @@ def new_entry_popup():
 # updates existing entry
 def update_entry_popup():
     
+    # retrieves selected entry's title for dictionary referencing
+    entry = get_selected_entry()
+
+    type_clicked = tk.StringVar()
+    type_clicked.set(entries[entry].type)
+
+    status_clicked = tk.StringVar()
+    status_clicked.set(entries[entry].readstat)
+
     def update_entry_func(selected_entry):
 
         # retrieves updated info about selected entry
         title = ue_title_entry.get()
-        type = ue_type_entry.get()
+        type = type_clicked.get()
         chapsread = ue_chapsread_entry.get()
-        readstat = ue_readstat_entry.get()
+        readstat = status_clicked.get()
 
         # clears whole json file
         clear_file()
@@ -235,13 +229,9 @@ def update_entry_popup():
 
         # closes update entry pop-up
         update_entry.destroy()
-
-    # retrieves selected entry's title for dictionary referencing
-    entry = get_selected_entry()
     
     update_entry = tk.Toplevel(home_frame, bg='lightgreen')
     update_entry.title('Update Entry')
-    # update_entry.geometry('300x300')
 
     update_entry_title = tk.Label(update_entry, text='Reading Logger | Update Entry', bg='lightgreen', font=('Maven Pro Black', 16))
     update_entry_title.grid(row=0, columnspan=2, pady=(0, 10), padx=10)
@@ -255,14 +245,12 @@ def update_entry_popup():
     ue_title_entry = tk.Entry(update_entry)
     ue_title_entry.insert('end', entries[entry].title)
 
-    ue_type_entry = tk.Entry(update_entry)
-    ue_type_entry.insert('end', entries[entry].type)
+    ue_type_entry = tk.OptionMenu(update_entry, type_clicked, *type_options)
     
     ue_chapsread_entry = tk.Entry(update_entry)
     ue_chapsread_entry.insert('end', entries[entry].chapsread)
     
-    ue_readstat_entry = tk.Entry(update_entry)
-    ue_readstat_entry.insert('end', entries[entry].readstat)
+    ue_readstat_entry = tk.OptionMenu(update_entry, status_clicked, *status_options)
 
     ue_update_btn = tk.Button(update_entry, text='Update Entry', **btn_params, command=lambda:update_entry_func(entry))
 
@@ -335,7 +323,6 @@ stat_toread = tk.StringVar()
 stat_read = tk.StringVar()
 
 root.title('Reading Logger')
-# root.geometry('300x300')
 
 # load reading stats
 load_stats()
