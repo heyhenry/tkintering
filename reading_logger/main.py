@@ -136,34 +136,34 @@ def new_entry_popup():
 
     new_entry = tk.Toplevel(home_frame, bg='lightyellow')
     new_entry.title('New Entry')
-    new_entry.geometry('300x300')
+    # new_entry.geometry('300x300')
     
-    new_entry_title = tk.Label(new_entry, text='Reading Logger | New Entry', bg='lightyellow')
-    new_entry_title.grid(row=0, columnspan=2)
+    new_entry_title = tk.Label(new_entry, text='Reading Logger | New Entry', bg='lightyellow', font=('Maven Pro Black', 16))
+    new_entry_title.grid(row=0, columnspan=2, pady=(0, 10), padx=10)
 
-    ne_title = tk.Label(new_entry, text='Title:', bg='lightyellow')
-    ne_type = tk.Label(new_entry, text='Type:', bg='lightyellow')
-    ne_chapsread = tk.Label(new_entry, text='Chapters Read:', bg='lightyellow')
-    ne_readstat = tk.Label(new_entry, text='Reading Status:', bg='lightyellow')
+    ne_title = tk.Label(new_entry, text='Title:', bg='lightyellow', font=('Maven Pro Black', 13))
+    ne_type = tk.Label(new_entry, text='Type:', bg='lightyellow', font=('Maven Pro Black', 13))
+    ne_chapsread = tk.Label(new_entry, text='Chapters Read:', bg='lightyellow', font=('Maven Pro Black', 13))
+    ne_readstat = tk.Label(new_entry, text='Reading Status:', bg='lightyellow', font=('Maven Pro Black', 13))
 
     ne_title_entry = tk.Entry(new_entry)
     ne_type_entry = tk.Entry(new_entry)
     ne_chapsread_entry = tk.Entry(new_entry)
     ne_readstat_entry = tk.Entry(new_entry)
 
-    submit_entry = tk.Button(new_entry, text='Add Entry', command=new_entry_func)
+    submit_entry = tk.Button(new_entry, text='Add Entry', **btn_params, command=new_entry_func)
 
-    ne_title.grid(row=1, column=0)
-    ne_type.grid(row=2, column=0)
-    ne_chapsread.grid(row=3, column=0)
-    ne_readstat.grid(row=4, column=0)
+    ne_title.grid(row=1, column=0, sticky='w', padx=10)
+    ne_type.grid(row=2, column=0, sticky='w', padx=10)
+    ne_chapsread.grid(row=3, column=0, sticky='w', padx=10)
+    ne_readstat.grid(row=4, column=0, sticky='w', padx=10)
 
-    ne_title_entry.grid(row=1, column=1)
-    ne_type_entry.grid(row=2, column=1)
-    ne_chapsread_entry.grid(row=3, column=1)
-    ne_readstat_entry.grid(row=4, column=1)
+    ne_title_entry.grid(row=1, column=1, padx=(0, 10))
+    ne_type_entry.grid(row=2, column=1, padx=(0, 10))
+    ne_chapsread_entry.grid(row=3, column=1, padx=(0, 10))
+    ne_readstat_entry.grid(row=4, column=1, padx=(0, 10))
 
-    submit_entry.grid(row=5, columnspan=2)
+    submit_entry.grid(row=5, columnspan=2, pady=10)
 
 # updates existing entry
 def update_entry_popup():
