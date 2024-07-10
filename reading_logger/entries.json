@@ -64,5 +64,11 @@
         "type": "magazine",
         "chapsread": "10",
         "readstat": "reading"
+    },
+    "new adventures 2": {
+        "title": "new adventures 2",
+        "type": "comic",
+        "chapsread": "100",
+        "readstat": "to read"
     }
 }

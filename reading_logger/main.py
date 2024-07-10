@@ -137,8 +137,11 @@ def clear_file():
 # new entry popup function to record entries
 def new_entry_popup():
 
-    clicked = tk.StringVar()
-    clicked.set('novel')
+    type_clicked = tk.StringVar()
+    type_clicked.set('novel')
+
+    status_clicked = tk.StringVar()
+    status_clicked.set('to read')
 
     # new entry function to save new reading entries to json file format
     def new_entry_func():
@@ -147,9 +150,9 @@ def new_entry_popup():
         load_entries()
 
         title = ne_title_entry.get()
-        type = clicked.get()
+        type = type_clicked.get()
         chapsread = ne_chapsread_entry.get()
-        readstat = ne_readstat_entry.get()
+        readstat = status_clicked.get()
 
         entries[title] = Entry(title, type, chapsread, readstat)
 
@@ -179,9 +182,9 @@ def new_entry_popup():
 
     ne_title_entry = tk.Entry(new_entry)
     # ne_type_entry = tk.Entry(new_entry)
-    ne_type_entry = tk.OptionMenu(new_entry, clicked, *type_options)
+    ne_type_entry = tk.OptionMenu(new_entry, type_clicked, *type_options)
     ne_chapsread_entry = tk.Entry(new_entry)
-    ne_readstat_entry = tk.Entry(new_entry)
+    ne_readstat_entry = tk.OptionMenu(new_entry, status_clicked, *status_options)
 
     submit_entry = tk.Button(new_entry, text='Add Entry', **btn_params, command=new_entry_func)
 
