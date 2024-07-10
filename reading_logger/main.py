@@ -206,15 +206,15 @@ def update_entry_popup():
     
     update_entry = tk.Toplevel(home_frame, bg='lightgreen')
     update_entry.title('Update Entry')
-    update_entry.geometry('300x300')
+    # update_entry.geometry('300x300')
 
-    update_entry_title = tk.Label(update_entry, text='Reading Logger | Update Entry', bg='lightgreen')
-    update_entry_title.grid(row=0, columnspan=2)
+    update_entry_title = tk.Label(update_entry, text='Reading Logger | Update Entry', bg='lightgreen', font=('Maven Pro Black', 16))
+    update_entry_title.grid(row=0, columnspan=2, pady=(0, 10), padx=10)
 
-    ue_title = tk.Label(update_entry, text='Title:', bg='lightgreen')
-    ue_type = tk.Label(update_entry, text='Type:', bg='lightgreen')
-    ue_chapsread = tk.Label(update_entry, text='Chapters Read:', bg='lightgreen')
-    ue_readstat = tk.Label(update_entry, text='Reading Status:', bg='lightgreen')
+    ue_title = tk.Label(update_entry, text='Title:', bg='lightgreen', font=('Maven Pro Black', 13))
+    ue_type = tk.Label(update_entry, text='Type:', bg='lightgreen', font=('Maven Pro Black', 13))
+    ue_chapsread = tk.Label(update_entry, text='Chapters Read:', bg='lightgreen', font=('Maven Pro Black', 13))
+    ue_readstat = tk.Label(update_entry, text='Reading Status:', bg='lightgreen', font=('Maven Pro Black', 13))
 
     # inserting existing data for selected entry
     ue_title_entry = tk.Entry(update_entry)
@@ -229,19 +229,19 @@ def update_entry_popup():
     ue_readstat_entry = tk.Entry(update_entry)
     ue_readstat_entry.insert('end', entries[entry].readstat)
 
-    ue_update_btn = tk.Button(update_entry, text='Update Entry', command=lambda:update_entry_func(entry))
+    ue_update_btn = tk.Button(update_entry, text='Update Entry', **btn_params, command=lambda:update_entry_func(entry))
 
-    ue_title.grid(row=1, column=0)
-    ue_type.grid(row=2, column=0)
-    ue_chapsread.grid(row=3, column=0)
-    ue_readstat.grid(row=4, column=0)
+    ue_title.grid(row=1, column=0, sticky='w', padx=10)
+    ue_type.grid(row=2, column=0, sticky='w', padx=10)
+    ue_chapsread.grid(row=3, column=0, sticky='w', padx=10)
+    ue_readstat.grid(row=4, column=0, sticky='w', padx=10)
 
-    ue_title_entry.grid(row=1, column=1)
-    ue_type_entry.grid(row=2, column=1)
-    ue_chapsread_entry.grid(row=3, column=1)
-    ue_readstat_entry.grid(row=4, column=1)
+    ue_title_entry.grid(row=1, column=1, padx=(0, 10))
+    ue_type_entry.grid(row=2, column=1, padx=(0, 10))
+    ue_chapsread_entry.grid(row=3, column=1, padx=(0, 10))
+    ue_readstat_entry.grid(row=4, column=1, padx=(0, 10))
 
-    ue_update_btn.grid(row=5, columnspan=2, padx=10, pady=10)
+    ue_update_btn.grid(row=5, columnspan=2, pady=10)
 
 # redirects and opens myanimelist site
 def redirect_mal():
