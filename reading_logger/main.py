@@ -29,6 +29,34 @@ entries = {}
 storage_filename = 'entries.json'
 stats = {'reading': 0, 'read': 0, 'toread': 0}
 
+type_options = [
+    'novel',
+    'manga',
+    'magazine',
+    'manhwa',
+    'comic'
+]
+
+status_options = [
+    'to read',
+    'reading',
+    'read'
+]
+
+rating_options = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+]
+
 # read and add existing entries found in save file to entries dictionary
 def load_entries():
 
@@ -109,6 +137,9 @@ def clear_file():
 # new entry popup function to record entries
 def new_entry_popup():
 
+    clicked = tk.StringVar()
+    clicked.set('novel')
+
     # new entry function to save new reading entries to json file format
     def new_entry_func():
 
@@ -116,7 +147,7 @@ def new_entry_popup():
         load_entries()
 
         title = ne_title_entry.get()
-        type = ne_type_entry.get()
+        type = clicked.get()
         chapsread = ne_chapsread_entry.get()
         readstat = ne_readstat_entry.get()
 
@@ -147,7 +178,8 @@ def new_entry_popup():
     ne_readstat = tk.Label(new_entry, text='Reading Status:', bg='lightyellow', font=('Maven Pro Black', 13))
 
     ne_title_entry = tk.Entry(new_entry)
-    ne_type_entry = tk.Entry(new_entry)
+    # ne_type_entry = tk.Entry(new_entry)
+    ne_type_entry = tk.OptionMenu(new_entry, clicked, *type_options)
     ne_chapsread_entry = tk.Entry(new_entry)
     ne_readstat_entry = tk.Entry(new_entry)
 

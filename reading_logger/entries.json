@@ -58,5 +58,11 @@
         "type": "comic",
         "chapsread": "10",
         "readstat": "to read"
+    },
+    "new adventures": {
+        "title": "new adventures",
+        "type": "magazine",
+        "chapsread": "10",
+        "readstat": "reading"
     }
 }
