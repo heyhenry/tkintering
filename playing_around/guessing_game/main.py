@@ -59,3 +59,6 @@ ai_summary.grid(row=5, columnspan=2)
 randnum_summary.grid(row=6, columnspan=2, pady=(0, 10))
 
 root.mainloop()
+
+# todo next time:
+# add a restart button to set game state back to start
