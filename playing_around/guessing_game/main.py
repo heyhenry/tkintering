@@ -23,6 +23,8 @@ def game_results():
         verdict.set('The AI has won!')
     elif player_choice.get() == str(randnum):
         verdict.set('The player has won!')
+    elif ai_choice_generation == randnum and player_choice.get() == str(randnum):
+        verdict.set('Tie, both parties won!')
     else:
         verdict.set('Noone won!')    
     
