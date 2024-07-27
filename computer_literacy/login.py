@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import json
 
 root = tk.Tk()
 root.title('Login Page')
@@ -27,7 +28,7 @@ username_entry.grid(row=1, column=1)
 
 password = ttk.Label(login_frame, text='Password:')
 password.grid(row=2, column=0)
-password_entry = ttk.Entry(login_frame)
+password_entry = ttk.Entry(login_frame, show='*')
 password_entry.grid(row=2, column=1)
 
 login = ttk.Button(login_frame, text='Login', command=test)
