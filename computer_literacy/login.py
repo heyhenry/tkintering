@@ -1,6 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+# from tkinter import PhotoImage
 import json
+from PIL import ImageTk, Image
+
+# resize an image to your liking (WxH)
+def resize_image(image_path, new_size):
+    # open the image using PIL
+    with Image.open(image_path) as img:
+        # resize the image using image.LANCZOS for high-quality resizing *Note. image.LANCZOS is not a required parameter
+        resized_img = img.resize(new_size)
+        return resized_img
 
 root = tk.Tk()
 root.title('Login Page')
@@ -9,6 +19,10 @@ root.geometry('300x150')
 username = tk.StringVar()
 password = tk.StringVar()
 uncensor_pressed = True
+close_eye_icon_resized = resize_image('closed_eye.png', (15, 15))
+closed_eye_icon = ImageTk.PhotoImage(close_eye_icon_resized)
+open_eye_icon_resized = resize_image('opened_eye.png', (15, 15))
+opened_eye_icon = ImageTk.PhotoImage(open_eye_icon_resized)
 
 # def validate_login():
 
@@ -21,9 +35,11 @@ def uncensor_password():
     global uncensor_pressed
     if uncensor_pressed:
         password_entry.config(show='')
+        uncensor_entry.config(image=closed_eye_icon)
         uncensor_pressed = False
     else:
         password_entry.config(show='*')
+        uncensor_entry.config(image=opened_eye_icon)
         uncensor_pressed = True
 
 login_frame = ttk.Frame(root)
@@ -41,7 +57,7 @@ password = ttk.Label(login_frame, text='Password:')
 password.grid(row=2, column=0)
 password_entry = ttk.Entry(login_frame, show='*')
 password_entry.grid(row=2, column=1)
-uncensor_entry = ttk.Button(login_frame, command=uncensor_password)
+uncensor_entry = tk.Button(login_frame, image=opened_eye_icon, command=uncensor_password)
 uncensor_entry.grid(row=2, column=2)
 
 login = ttk.Button(login_frame, text='Login', command=test)
