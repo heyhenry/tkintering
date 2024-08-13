@@ -40,7 +40,7 @@ def play_game():
         winner.set('AI Player')
     
 main_screen = tk.Frame(root)
-main_screen.pack()
+main_screen.pack(padx=20, pady=20)
 
 # title
 rps_title = tk.Label(main_screen, text='Rock.. Paper.. Scissors!')
