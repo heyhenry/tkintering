@@ -2,9 +2,8 @@ import tkinter as tk
 
 class MainApp(tk.Tk):
     def __init__(self, *args, **kwargs):
-        
-        tk.Tk.__init__(self, *args, **kwargs)
-        
+        super().__init__(*args, **kwargs)
+
         main_window = tk.Frame(self)
         main_window.pack(side='top', fill='both', expand=True)
 
@@ -13,6 +12,7 @@ class MainApp(tk.Tk):
 
         self.frames = {}
 
+        # Initialize StringVars for username and password
         self.username = tk.StringVar()
         self.password = tk.StringVar()
 
@@ -29,10 +29,9 @@ class MainApp(tk.Tk):
 
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        super().__init__(parent)
 
         loginpage_title = tk.Label(self, text='TooKao Login Page')
-
         username_title = tk.Label(self, text='Username:')
         username_entry = tk.Entry(self, textvariable=controller.username)
         password_title = tk.Label(self, text='Password:')
@@ -49,17 +48,16 @@ class LoginPage(tk.Frame):
 
 class ProfilePage(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        
-        profile_title = tk.Label(self, textvariable=controller.username)
+        super().__init__(parent)
+
+        # Directly use the StringVar for the label
+        profile_title = tk.Label(self, textvariable=controller.username, font=("Verdana", 20))
         profile_title.grid(row=0, column=0)
 
         btn = tk.Button(self, text='Logout', command=lambda: controller.show_frame(LoginPage))
         btn.grid(row=1, column=0)
 
-# class RegisterPage(tk.Frame):
-#     pass
-
+# Driver Code
 if __name__ == "__main__":
     app = MainApp()
     app.mainloop()
