@@ -51,8 +51,10 @@ class ProfilePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         
-        profile_title = tk.Label(self, textvariable=controller.username)
-        profile_title.grid(row=0, column=0)
+        profile_title_welcome = tk.Label(self, text='Welcome Back:')
+        profile_title_welcome.grid(row=0, column=0)
+        profile_title_username = tk.Label(self, textvariable=controller.username)
+        profile_title_username.grid(row=0, column=1)
 
         btn = tk.Button(self, text='Logout', command=lambda: controller.show_frame(LoginPage))
         btn.grid(row=1, column=0)
