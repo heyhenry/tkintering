@@ -25,11 +25,15 @@ class MainApp(tk.Tk):
 
     def show_frame(self, page):
         frame = self.frames[page]
+        if isinstance(frame, ProfilePage):
+            frame.update_username_display()
         frame.tkraise()
 
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+
+        self.controller = controller
 
         loginpage_title = tk.Label(self, text='TooKao Login Page')
 
@@ -38,7 +42,7 @@ class LoginPage(tk.Frame):
         password_title = tk.Label(self, text='Password:')
         password_entry = tk.Entry(self, textvariable=controller.password)
 
-        login_submit = tk.Button(self, text='Login', command=lambda: controller.show_frame(ProfilePage))
+        login_submit = tk.Button(self, text='Login', command=lambda: self.controller.show_frame(ProfilePage))
 
         loginpage_title.grid(row=0, columnspan=2)
         username_title.grid(row=1, column=0)
@@ -50,14 +54,17 @@ class LoginPage(tk.Frame):
 class ProfilePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        
-        profile_title_welcome = tk.Label(self, text='Welcome Back:')
-        profile_title_welcome.grid(row=0, column=0)
-        profile_title_username = tk.Label(self, textvariable=controller.username)
-        profile_title_username.grid(row=0, column=1)
 
-        btn = tk.Button(self, text='Logout', command=lambda: controller.show_frame(LoginPage))
-        btn.grid(row=1, column=0)
+        self.controller = controller
+        
+        self.profile_title = tk.Label(self, text='')
+        self.profile_title.grid(row=0, column=0)
+
+        self.btn = tk.Button(self, text='Logout', command=lambda: self.controller.show_frame(LoginPage))
+        self.btn.grid(row=1, column=0)
+    
+    def update_username_display(self):
+        self.profile_title.config(text=f'Welcome Back, {self.controller.username.get()}')
 
 # class RegisterPage(tk.Frame):
 #     pass
