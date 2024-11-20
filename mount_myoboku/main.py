@@ -41,21 +41,32 @@ class LoginPage(tk.Frame):
     def create_widgets(self):
         title = tk.Label(self, font=('helvetica', 32), text='Mount Myoboku')
         motivational_quote = tk.Label(self, font=('helvetica', 18), text='aosdjfaosdjfoajdfopjafopjasdofjaodfjad')
-        password_title = tk.Label(self, font=('helvetica', 24), text='Password:')
-        password = tk.Entry(self, font=('helvetica', 24), textvariable=self.password_var)
-        confirm_password_title = tk.Label(self, font=('helvetica', 24), text='Confirm Password:')
-        confirm_password = tk.Entry(self, font=('helvetica', 24), textvariable=self.confirm_password_var)
+        self.password_title = tk.Label(self, font=('helvetica', 24), text='Password:')
+        self.password = tk.Entry(self, font=('helvetica', 24), textvariable=self.password_var)
+        self.confirm_password_title = tk.Label(self, font=('helvetica', 24), text='Confirm Password:')
+        self.confirm_password = tk.Entry(self, font=('helvetica', 24), textvariable=self.confirm_password_var)
         self.error_message = tk.Label(self, font=('helvetica', 24), text='dfjadfhasdhfasdhjfa', foreground='red')
-        enter = tk.Button(self, font=('helvetica', 24), text="Enter Mount Myoboku")
+        self.enter = tk.Button(self, font=('helvetica', 24), text="Enter Mount Myoboku")
 
         title.place(x=250, y=50)
         motivational_quote.place(x=200, y=150)
-        password_title.place(x=200, y=250)
-        password.place(x=200, y=300)
-        confirm_password_title.place(x=200, y=400)
-        confirm_password.place(x=200, y=450)
+
+        # self.existing_user_layout()
+        self.non_existing_user_layout()
+
+    def existing_user_layout(self):
+        self.password_title.place(x=200, y=300)
+        self.password.place(x=200, y=350)
+        self.error_message.place(x=200, y=400)
+        self.enter.place(x=200, y=500)
+
+    def non_existing_user_layout(self):
+        self.password_title.place(x=200, y=250)
+        self.password.place(x=200, y=300)
+        self.confirm_password_title.place(x=200, y=400)
+        self.confirm_password.place(x=200, y=450)
         self.error_message.place(x=200, y=500)
-        enter.place(x=200, y=550)
+        self.enter.place(x=200, y=550)
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
