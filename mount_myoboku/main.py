@@ -45,11 +45,9 @@ class HomePage(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        hello = tk.Label(self, text='Hello, This is the Home Page.')
-        login_redirect = tk.Button(self, text='Login Page', command=lambda: self.controller.show_page(LoginPage))
+        
 
-        hello.pack()
-        login_redirect.pack()
+    def 
 
 if __name__ == "__main__":
     app = MainApp()
