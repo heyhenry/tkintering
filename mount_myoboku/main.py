@@ -1,6 +1,11 @@
 import tkinter as tk
 import json
+import os
+from user import UserInfo
 
+user = {}
+
+user_savefile = 'user_save.json'
 
 class MainApp(tk.Tk):
     def __init__(self, *args, **kwargs):
@@ -23,9 +28,20 @@ class MainApp(tk.Tk):
 
         self.show_page(LoginPage)
 
+    # show the selected page
     def show_page(self, cont):
         page = self.pages[cont]
         page.tkraise()
+    
+    # load the user data
+    def load_user(self):
+        global user
+        if os.path.exists(user_savefile):
+            with open(user_savefile, 'r') as file:
+                user_data = json.load(file)
+                for u, u_info in user_data.items():
+                    user[u] = UserInfo(u_info['password'])
+
 
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
