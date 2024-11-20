@@ -4,6 +4,8 @@ class MainApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
+        self.geometry('1800x1000')
+
         container = tk.Frame(self)
         container.pack(side='top', fill='both', expand=True)
 
@@ -26,16 +28,34 @@ class MainApp(tk.Tk):
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-
+        
         self.controller = controller
+        self.controller.geometry('800x800')
+
+        self.motivational_quotes = ['Just do it - Nike', 'Be the change you wanna see - Unknown', 'Show them all with your success - Unknown']
+        self.password_var = tk.StringVar()
+        self.confirm_password_var = tk.StringVar()
+
         self.create_widgets()
 
     def create_widgets(self):
-        hello = tk.Label(self, text='Hello, This is the Login Page!')
-        home_redirect = tk.Button(self, text='Home Page', command=lambda:self.controller.show_page(HomePage))
+        title = tk.Label(self, font=('helvetica', 32), text='Mount Myoboku')
+        motivational_quote = tk.Label(self, font=('helvetica', 18), text='aosdjfaosdjfoajdfopjafopjasdofjaodfjad')
+        password_title = tk.Label(self, font=('helvetica', 24), text='Password:')
+        password = tk.Entry(self, font=('helvetica', 24), textvariable=self.password_var)
+        confirm_password_title = tk.Label(self, font=('helvetica', 24), text='Confirm Password:')
+        confirm_password = tk.Entry(self, font=('helvetica', 24), textvariable=self.confirm_password_var)
+        self.error_message = tk.Label(self, font=('helvetica', 24), text='dfjadfhasdhfasdhjfa', foreground='red')
+        enter = tk.Button(self, font=('helvetica', 24), text="Enter Mount Myoboku")
 
-        hello.pack()
-        home_redirect.pack()
+        title.place(x=250, y=50)
+        motivational_quote.place(x=200, y=150)
+        password_title.place(x=200, y=250)
+        password.place(x=200, y=300)
+        confirm_password_title.place(x=200, y=400)
+        confirm_password.place(x=200, y=450)
+        self.error_message.place(x=200, y=500)
+        enter.place(x=200, y=550)
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
@@ -45,9 +65,8 @@ class HomePage(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        
-
-    def 
+        temp = tk.Label(self, text='This is the Home Page.') 
+        temp.pack()
 
 if __name__ == "__main__":
     app = MainApp()
