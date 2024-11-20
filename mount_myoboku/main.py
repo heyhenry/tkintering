@@ -42,6 +42,17 @@ class MainApp(tk.Tk):
                 for u, u_info in user_data.items():
                     user[u] = UserInfo(u_info['password'])
 
+    # custom serializer for json
+    def custom_serializer(self, obj):
+        if isinstance(obj, UserInfo):
+            return {
+                'password': obj.password
+            }
+        return obj
+
+    # def save_user_data(self):
+    #     user_object = json.dumps(user, indent=4, default=self.custom_serializer)
+
 
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
