@@ -50,9 +50,11 @@ class MainApp(tk.Tk):
             }
         return obj
 
-    # def save_user_data(self):
-    #     user_object = json.dumps(user, indent=4, default=self.custom_serializer)
-
+    # update the user data in the save file
+    def save_user_data(self):
+        user_object = json.dumps(user, indent=4, default=self.custom_serializer)
+        with open(user_savefile, 'w') as outfile:
+            outfile.write(user_object)
 
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
