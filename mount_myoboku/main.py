@@ -19,6 +19,8 @@ class MainApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
+        self.load_user_data()
+
         self.pages = {}
 
         for P in (LoginPage, HomePage):
@@ -34,7 +36,7 @@ class MainApp(tk.Tk):
         page.tkraise()
     
     # load the user data
-    def load_user(self):
+    def load_user_data(self):
         global user
         if os.path.exists(user_savefile):
             with open(user_savefile, 'r') as file:
@@ -76,28 +78,67 @@ class LoginPage(tk.Frame):
         self.password = tk.Entry(self, font=('helvetica', 24), textvariable=self.password_var)
         self.confirm_password_title = tk.Label(self, font=('helvetica', 24), text='Confirm Password:')
         self.confirm_password = tk.Entry(self, font=('helvetica', 24), textvariable=self.confirm_password_var)
-        self.error_message = tk.Label(self, font=('helvetica', 24), text='dfjadfhasdhfasdhjfa', foreground='red')
+        self.error_message = tk.Label(self, font=('helvetica', 24), foreground='red')
         self.enter = tk.Button(self, font=('helvetica', 24), text="Enter Mount Myoboku")
 
         title.place(x=250, y=50)
         motivational_quote.place(x=200, y=150)
 
-        # self.existing_user_layout()
-        self.non_existing_user_layout()
+        if user['user'].password:
+            self.existing_user_layout()
+        else:
+            self.non_existing_user_layout()      
 
+    # display this layout if user has already set a password
     def existing_user_layout(self):
+        self.password_title.place_forget()
+        self.password.place_forget()
+        self.confirm_password_title.place_forget()
+        self.confirm_password.place_forget()
+        self.error_message.place_forget()
+        self.enter.place_forget()
+
+        self.enter.config(command=self.validate_existing_password)
+
         self.password_title.place(x=200, y=300)
         self.password.place(x=200, y=350)
         self.error_message.place(x=200, y=400)
         self.enter.place(x=200, y=500)
 
+    # display this layout if user hasn't already set a password
     def non_existing_user_layout(self):
+        self.password_title.place_forget()
+        self.password.place_forget()
+        self.confirm_password_title.place_forget()
+        self.confirm_password.place_forget()
+        self.error_message.place_forget()
+        self.enter.place_forget()
+
+        self.enter.config(command=self.validate_new_password)
+
         self.password_title.place(x=200, y=250)
         self.password.place(x=200, y=300)
         self.confirm_password_title.place(x=200, y=400)
         self.confirm_password.place(x=200, y=450)
         self.error_message.place(x=200, y=500)
         self.enter.place(x=200, y=550)
+
+    def validate_new_password(self):
+        self.error_message.config(text='')
+        if self.password_var.get() != self.confirm_password_var.get():
+            self.error_message.config(text="Error: Password Inputs Don't Match.")
+        else:
+            user['user'].password = self.password_var.get()
+            self.controller.save_user_data()
+            self.existing_user_layout()
+
+    def validate_existing_password(self):
+        self.error_message.config(text='')
+        if self.password_var.get() != user['user'].password:
+            self.error_message.config(text='Error: Invalid Password.')
+        else:
+            self.controller.show_page(HomePage)
+        
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
