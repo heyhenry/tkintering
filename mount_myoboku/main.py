@@ -11,8 +11,6 @@ class MainApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        self.geometry('1800x1000')
-
         container = tk.Frame(self)
         container.pack(side='top', fill='both', expand=True)
 
@@ -161,6 +159,7 @@ class HomePage(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         self.controller = controller
+
         self.create_widgets()
 
     def create_widgets(self):
