@@ -31,6 +31,11 @@ class MainApp(tk.Tk):
     # show the selected page
     def show_page(self, cont):
         page = self.pages[cont]
+        # change the size of screen based on page shown
+        if page == self.pages[LoginPage]:
+            self.geometry('800x800')
+        else:
+            self.geometry('1800x1000')
         page.tkraise()
     
     # load the user data
@@ -61,7 +66,6 @@ class LoginPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         
         self.controller = controller
-        self.controller.geometry('800x800')
 
         self.motivational_quotes = ['Just do it - Nike', 'Be the change you wanna see - Unknown', 'Show them all with your success - Unknown']
         self.password_var = tk.StringVar()
