@@ -141,6 +141,8 @@ class LoginPage(tk.Frame):
             user['user'].password = self.password_var.get()
             # save the user data to the json file
             self.controller.save_user_data()
+            # clear the password entry field
+            self.password.delete(0, 'end')
             # display the relevant new layout/widgets
             self.existing_user_layout()
 
@@ -154,7 +156,6 @@ class LoginPage(tk.Frame):
             # redirect to the home page when password is successfully entered
             self.controller.show_page(HomePage)
         
-
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
