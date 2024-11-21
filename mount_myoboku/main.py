@@ -84,6 +84,7 @@ class LoginPage(tk.Frame):
         title.place(x=250, y=50)
         motivational_quote.place(x=200, y=150)
 
+        # determine which layout to show based on whether password exists
         if user['user'].password:
             self.existing_user_layout()
         else:
@@ -91,6 +92,7 @@ class LoginPage(tk.Frame):
 
     # display this layout if user has already set a password
     def existing_user_layout(self):
+        # clear slate widgets
         self.password_title.place_forget()
         self.password.place_forget()
         self.confirm_password_title.place_forget()
@@ -98,8 +100,10 @@ class LoginPage(tk.Frame):
         self.error_message.place_forget()
         self.enter.place_forget()
 
+        # attach relevant function call
         self.enter.config(command=self.validate_existing_password)
 
+        # place relevant widgets
         self.password_title.place(x=200, y=300)
         self.password.place(x=200, y=350)
         self.error_message.place(x=200, y=400)
@@ -107,6 +111,7 @@ class LoginPage(tk.Frame):
 
     # display this layout if user hasn't already set a password
     def non_existing_user_layout(self):
+        # clean slate relevant widgets
         self.password_title.place_forget()
         self.password.place_forget()
         self.confirm_password_title.place_forget()
@@ -114,8 +119,10 @@ class LoginPage(tk.Frame):
         self.error_message.place_forget()
         self.enter.place_forget()
 
+        # attach relevant function call
         self.enter.config(command=self.validate_new_password)
 
+        # place relevant widgets
         self.password_title.place(x=200, y=250)
         self.password.place(x=200, y=300)
         self.confirm_password_title.place(x=200, y=400)
@@ -123,20 +130,28 @@ class LoginPage(tk.Frame):
         self.error_message.place(x=200, y=500)
         self.enter.place(x=200, y=550)
 
+    # ensure password and confirm password are correct before saving password
     def validate_new_password(self):
         self.error_message.config(text='')
         if self.password_var.get() != self.confirm_password_var.get():
+            # display an error message if the passwords do not match
             self.error_message.config(text="Error: Password Inputs Don't Match.")
         else:
+            # save password to the user's password attribute
             user['user'].password = self.password_var.get()
+            # save the user data to the json file
             self.controller.save_user_data()
+            # display the relevant new layout/widgets
             self.existing_user_layout()
 
+    # ensure that the given password matches the one saved in the user save file
     def validate_existing_password(self):
         self.error_message.config(text='')
         if self.password_var.get() != user['user'].password:
+            # display an error message if the password does not match the saved password
             self.error_message.config(text='Error: Invalid Password.')
         else:
+            # redirect to the home page when password is successfully entered
             self.controller.show_page(HomePage)
         
 
