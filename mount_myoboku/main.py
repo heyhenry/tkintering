@@ -167,8 +167,8 @@ class HomePage(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        temp = tk.Label(self, text='This is the Home Page.') 
-        temp.pack()
+        title = tk.Label(self, text='Mount Myoboku', font=('helvetica', 48))
+        title.place(x=700, y=50)
 
 if __name__ == "__main__":
     app = MainApp()
