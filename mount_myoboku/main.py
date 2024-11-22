@@ -169,6 +169,25 @@ class HomePage(tk.Frame):
     def create_widgets(self):
         title = tk.Label(self, text='Mount Myoboku', font=('helvetica', 48))
         title.place(x=700, y=50)
+        motivational_quote = tk.Label(self, text='dfadfadfadfiasdfhaasdfhadfha', font=('helvetica', 18))
+        motivational_quote.place(x=700, y=150)
+
+        date_info = tk.Label(self, text='Date: 23rd November 2024', font=('helvetica', 18))
+        date_info.place(x=50, y=50)
+        time_info = tk.Label(self, text='Time: 04:47:02', font=('helvetica', 18))
+        time_info.place(x=50, y=100)
+
+
+        nav_workout = tk.Label(self, text='Add Workout', font=('helvetica', 18))
+        nav_workout.place(x=1250, y=50)
+        nav_divider_one = tk.Label(self, text='|', font=('helvetica', 18))
+        nav_divider_one.place(x=1420, y=50)
+        nav_stats = tk.Label(self, text='Check Stats', font=('helvetica', 18))
+        nav_stats.place(x=1450, y=50)
+        nav_divider_two = tk.Label(self, text='|', font=('helvetica', 18))
+        nav_divider_two.place(x=1620, y=50)
+        nav_logout = tk.Label(self, text='Logout', font=('helvetica', 18))
+        nav_logout.place(x=1650, y=50)
 
 if __name__ == "__main__":
     app = MainApp()
