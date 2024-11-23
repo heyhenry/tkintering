@@ -189,6 +189,26 @@ class HomePage(tk.Frame):
         nav_logout = tk.Label(self, text='Logout', font=('helvetica', 18))
         nav_logout.place(x=1650, y=50)
 
+        last_workout_date = tk.Label(self, text='Last Worked Out:', font=('helvetica', 24))
+        goal_weight = tk.Label(self, text='Goal Weight:', font=('helvetica', 24))
+        steps_taken_today = tk.Label(self, text='Steps Taken Today:', font=('helvetica', 24))
+        steps_taken_total = tk.Label(self, text='Total Steps Taken:', font=('helvetica', 24))
+
+        last_workout_date.place(x=250, y=300)
+        goal_weight.place(x=250, y=400)
+        steps_taken_today.place(x=250, y=500)
+        steps_taken_total.place(x=250, y=600)
+
+        why_doing = tk.Label(self, text='Why are you doing this?', font=('helvetica', 24))
+        who_for = tk.Label(self, text='Who is this for?', font=('helvetica', 24))
+        what_moves_you = tk.Label(self, text='What keeps you moving?', font=('helvetica', 24))
+        selfish_reward = tk.Label(self, text="What's a selfish reward once you reach this goal?", font=('helvetica', 24))
+
+        why_doing.place(x=1000, y=300)
+        who_for.place(x=1000, y=400)
+        what_moves_you.place(x=1000, y=500)
+        selfish_reward.place(x=1000, y=600)
+        
 if __name__ == "__main__":
     app = MainApp()
     app.mainloop()
