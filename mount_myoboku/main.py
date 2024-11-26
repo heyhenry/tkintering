@@ -188,7 +188,7 @@ class HomePage(tk.Frame):
         nav_logout = tk.Label(self, text='Logout', font=('helvetica', 18))
         nav_logout.place(x=1650, y=50)
 
-        nav_workout.bind("Button-1", lambda mouse_event: self.redirect_page(mouse_event, WorkoutPage))
+        nav_workout.bind("<Button-1>", lambda mouse_event: self.redirect_page(mouse_event, WorkoutPage))
 
         last_workout_date = tk.Label(self, text='Last Worked Out:', font=('helvetica', 24))
         goal_weight = tk.Label(self, text='Goal Weight:', font=('helvetica', 24))
