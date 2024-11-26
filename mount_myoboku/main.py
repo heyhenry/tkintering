@@ -21,7 +21,7 @@ class MainApp(tk.Tk):
 
         self.pages = {}
 
-        for P in (LoginPage, HomePage):
+        for P in (LoginPage, HomePage, WorkoutPage):
             page = P(container, self)
             self.pages[P] = page
             page.grid(row=0, column=0, sticky='nswe')
@@ -177,7 +177,6 @@ class HomePage(tk.Frame):
         time_info = tk.Label(self, text='Time: 04:47:02', font=('helvetica', 18))
         time_info.place(x=50, y=100)
 
-
         nav_workout = tk.Label(self, text='Add Workout', font=('helvetica', 18))
         nav_workout.place(x=1250, y=50)
         nav_divider_one = tk.Label(self, text='|', font=('helvetica', 18))
@@ -188,6 +187,8 @@ class HomePage(tk.Frame):
         nav_divider_two.place(x=1620, y=50)
         nav_logout = tk.Label(self, text='Logout', font=('helvetica', 18))
         nav_logout.place(x=1650, y=50)
+
+        nav_workout.bind("Button-1", lambda mouse_event: self.redirect_page(mouse_event, WorkoutPage))
 
         last_workout_date = tk.Label(self, text='Last Worked Out:', font=('helvetica', 24))
         goal_weight = tk.Label(self, text='Goal Weight:', font=('helvetica', 24))
@@ -208,7 +209,24 @@ class HomePage(tk.Frame):
         who_for.place(x=1000, y=400)
         what_moves_you.place(x=1000, y=500)
         selfish_reward.place(x=1000, y=600)
+
+    def redirect_page(self, mouse_event, page_choice):
+        self.controller.show_page(page_choice)
         
+
+class WorkoutPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+    
+        self.controller = controller
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        temp = tk.Label(self, text='Workout Page')
+        temp.pack()
+
+
 if __name__ == "__main__":
     app = MainApp()
     app.mainloop()
