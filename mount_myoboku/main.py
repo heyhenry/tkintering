@@ -21,7 +21,7 @@ class MainApp(tk.Tk):
 
         self.pages = {}
 
-        for P in (LoginPage, HomePage, WorkoutPage):
+        for P in (LoginPage, HomePage, WorkoutPage, StatsPage):
             page = P(container, self)
             self.pages[P] = page
             page.grid(row=0, column=0, sticky='nswe')
@@ -189,6 +189,8 @@ class HomePage(tk.Frame):
         nav_logout.place(x=1650, y=50)
 
         nav_workout.bind("<Button-1>", lambda mouse_event: self.redirect_page(mouse_event, WorkoutPage))
+        nav_stats.bind("<Button-1>", lambda mouse_event: self.redirect_page(mouse_event, StatsPage))
+        nav_logout.bind("<Button-1>", lambda mouse_event: self.redirect_page(mouse_event, LoginPage))
 
         last_workout_date = tk.Label(self, text='Last Worked Out:', font=('helvetica', 24))
         goal_weight = tk.Label(self, text='Goal Weight:', font=('helvetica', 24))
@@ -211,9 +213,11 @@ class HomePage(tk.Frame):
         selfish_reward.place(x=1000, y=600)
 
     def redirect_page(self, mouse_event, page_choice):
+        if page_choice == LoginPage:
+            # clears the password entry's input field
+            self.controller.pages[LoginPage].password.delete(0, 'end')
         self.controller.show_page(page_choice)
         
-
 class WorkoutPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -226,6 +230,15 @@ class WorkoutPage(tk.Frame):
         temp = tk.Label(self, text='Workout Page')
         temp.pack()
 
+class StatsPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        self.create_widgets()
+    
+    def create_widgets(self):
+        temp = tk.Label(self, text='Stats Page')
+        temp.pack()
 
 if __name__ == "__main__":
     app = MainApp()
