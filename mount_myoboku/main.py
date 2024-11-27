@@ -2,6 +2,7 @@ import tkinter as tk
 import json
 import os
 from user import UserInfo
+import random
 
 user = {}
 
@@ -60,6 +61,15 @@ class MainApp(tk.Tk):
         user_object = json.dumps(user, indent=4, default=self.custom_serializer)
         with open(user_savefile, 'w') as outfile:
             outfile.write(user_object)
+
+    # loading and returning a random quote
+    def load_a_quote(self):
+        with open('quotes.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
+            quotes = data['quotes']
+
+            the_quote = random.choice(quotes)
+            return f'{the_quote['quote']} ~ {the_quote['author']}'
 
 class LoginPage(tk.Frame):
     def __init__(self, parent, controller):
