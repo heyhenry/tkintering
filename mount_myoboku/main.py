@@ -77,7 +77,6 @@ class LoginPage(tk.Frame):
         
         self.controller = controller
 
-        self.motivational_quotes = ['Just do it - Nike', 'Be the change you wanna see - Unknown', 'Show them all with your success - Unknown']
         self.password_var = tk.StringVar()
         self.confirm_password_var = tk.StringVar()
 
