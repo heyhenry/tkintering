@@ -82,10 +82,11 @@ class LoginPage(tk.Frame):
         self.confirm_password_var = tk.StringVar()
 
         self.create_widgets()
+        self.give_a_quote()
 
     def create_widgets(self):
         title = tk.Label(self, font=('helvetica', 32), text='Mount Myoboku')
-        motivational_quote = tk.Label(self, font=('helvetica', 18), text='aosdjfaosdjfoajdfopjafopjasdofjaodfjad')
+        self.motivational_quote = tk.Label(self, font=('helvetica', 18), wraplength=500)
         self.password_title = tk.Label(self, font=('helvetica', 24), text='Password:')
         self.password = tk.Entry(self, font=('helvetica', 24), textvariable=self.password_var)
         self.confirm_password_title = tk.Label(self, font=('helvetica', 24), text='Confirm Password:')
@@ -94,7 +95,7 @@ class LoginPage(tk.Frame):
         self.enter = tk.Button(self, font=('helvetica', 24), text="Enter Mount Myoboku")
 
         title.place(x=250, y=50)
-        motivational_quote.place(x=200, y=150)
+        self.motivational_quote.place(x=200, y=150)
 
         # determine which layout to show based on whether password exists
         if user['user'].password:
@@ -168,6 +169,9 @@ class LoginPage(tk.Frame):
             # redirect to the home page when password is successfully entered
             self.controller.show_page(HomePage)
         
+    def give_a_quote(self):
+        self.motivational_quote.config(text=self.controller.load_a_quote(), justify='left')
+
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
