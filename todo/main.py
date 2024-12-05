@@ -30,6 +30,12 @@ def custom_serializer(obj):
         }
     return obj
 
+# update the save file
+def update_savefile():
+    json_object = json.dumps(tasks_dict, indent=4, default=custom_serializer)
+    with open(savefile, 'w') as outfile:
+        outfile.write(json_object)
+
 # populate the task list(todos)
 def populate_tasks_list():
     load_tasks()
@@ -56,10 +62,12 @@ def remove_task():
         tasks.delete(i)
 
 # update status of a task if checkbutton has a different value than what's saved
-def update_task_status(mouse_event):
-    if task_check_var.get() != tasks_dict[selected_task_var.get()].task_status:
-        tasks_dict[selected_task_var.get()].task_status = task_check_var.get()
-        print(tasks_dict[selected_task_var.get()].task_status)
+def update_task_status(*args):
+    print(selected_task_var.get())
+    # if task_check_var.get() != tasks_dict[selected_task_var.get()].task_status:
+    #     tasks_dict[selected_task_var.get()].task_status = task_check_var.get()
+    #     print(tasks_dict[selected_task_var.get()].task_status)
+    #     update_savefile()
 
 task_subtitle = tk.Label(root, text='Enter Task:', font=(18))
 task_entry = tk.Entry(root, textvariable=task_var, font=(18))
@@ -89,7 +97,7 @@ remove_task_button.place(y=595, x=400)
 
 # interact with the list in the todo list and display selected task in the task display section 
 tasks.bind('<<ListboxSelect>>', lambda mouse_event: display_task(mouse_event))
-task_checkbox.bind('<ButtonRelease-1>', lambda mouse_event: update_task_status(mouse_event))
+task_check_var.trace_add('write', lambda *args: update_task_status(*args))
 
 populate_tasks_list()
 
