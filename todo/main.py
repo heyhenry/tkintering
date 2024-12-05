@@ -31,7 +31,8 @@ def add_task():
 
 # display selected task
 def display_task(mouse_event):
-    selected_task.config(text=task_var.get())
+    for i in tasks.curselection():
+        selected_task.config(text=tasks.get(i))
 
 # remove selected task
 def remove_task():
@@ -65,7 +66,7 @@ task_checkbox.place(y=600, x=30)
 remove_task_button.place(y=595, x=400)
 
 # interact with the list in the todo list and display selected task in the task display section 
-tasks.bind('<Button-1>', lambda mouse_event: display_task(mouse_event))
+tasks.bind('<<ListboxSelect>>', lambda mouse_event: display_task(mouse_event))
 
 populate_tasks_list()
 

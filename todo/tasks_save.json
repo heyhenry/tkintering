@@ -1,10 +1,10 @@
 {
-    "task_name": {
-        "task_name": "poop",
+    "waterkick": {
+        "task_name": "waterkick",
         "task_status": 1
     },
-    "task_namez": {
-        "task_name": "poop",
+    "firekick": {
+        "task_name": "firekick",
         "task_status": 1
     }
 }
