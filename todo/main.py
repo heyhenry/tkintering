@@ -30,6 +30,7 @@ def custom_serializer(obj):
         }
     return obj
 
+# populate the task list(todos)
 def populate_tasks_list():
     load_tasks()
     for i in tasks_dict.keys():
