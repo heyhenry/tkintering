@@ -12,6 +12,7 @@ root.geometry('500x800')
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
+selected_task_var = tk.StringVar()
 
 def load_tasks():
     if os.path.exists(savefile):
@@ -36,11 +37,19 @@ def display_task(mouse_event):
         selected_task.config(text=tasks.get(i))
         # display the correct task status via the checkbutton
         task_check_var.set(tasks_dict[tasks.get(i)].task_status)
+        # update the selected task var's value
+        selected_task_var.set(tasks.get(i))
 
 # remove selected task
 def remove_task():
     for i in tasks.curselection():
         tasks.delete(i)
+
+# update status of a task if checkbutton has a different value than what's saved
+def update_task_status(mouse_event):
+    if task_check_var.get() != tasks_dict[selected_task_var.get()].task_status:
+        tasks_dict[selected_task_var.get()].task_status = task_check_var.get()
+        print(tasks_dict[selected_task_var.get()].task_status)
 
 task_subtitle = tk.Label(root, text='Enter Task:', font=(18))
 task_entry = tk.Entry(root, textvariable=task_var, font=(18))
@@ -70,6 +79,7 @@ remove_task_button.place(y=595, x=400)
 
 # interact with the list in the todo list and display selected task in the task display section 
 tasks.bind('<<ListboxSelect>>', lambda mouse_event: display_task(mouse_event))
+task_checkbox.bind('<ButtonRelease-1>', lambda mouse_event: update_task_status(mouse_event))
 
 populate_tasks_list()
 
