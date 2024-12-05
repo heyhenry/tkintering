@@ -14,6 +14,8 @@ task_enter_title.place(y=50, x=300)
 task_enter_prompt = tk.Entry(root, textvariable=task_var, font=(24))
 task_enter_prompt.place(y=50, x=400, width=300)
 # add task button
+task_add_button = tk.Button(root, text='Add Task')
+task_add_button.place(y=48, x=710)
 
 # listbox for added tasks
 tasks_listbox_title = tk.Label(root, text='To Do Tasks:', font=(24))
