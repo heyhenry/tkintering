@@ -6,6 +6,7 @@ root.title('To Do App.')
 root.geometry('800x600')
 
 task_var = tk.StringVar()
+task_check_var = tk.IntVar()
 
 # task input
 task_enter_title = tk.Label(root, text='Enter Task:', font=(24))
@@ -42,8 +43,14 @@ clear_all_button.config(font=(24))
 clear_all_button.place(y=450, x=70)
 
 # display selected task
+selected_task_title = tk.Label(root, text='Task Name:', font=(24))
+selected_task_title.place(y=120, x=350)
+
+selected_task_name = tk.Label(root, text='Deep Clean Bedroom', font=(24)) # <-- temp hardcoded text
+selected_task_name.place(y=120, x=450)
+
 # mark task as done
-
-
+selected_task_checkbutton = tk.Checkbutton(root, text='Task Completed', variable=task_check_var, onvalue=1, offvalue=0, font=(24))
+selected_task_checkbutton.place(y=180, x=400)
 
 root.mainloop()
