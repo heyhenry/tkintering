@@ -1,3 +1,7 @@
+# considerations:
+- update ui to a cleaner, minimalistic and simple one
+
+# to implement:
 - Validation to restrict length of inputted task
 - Create task object for saving purposes (task_name = 'Clean bedroom', task_status = 'Completed' / 'Incompleted')
 - Create task dictionary to store saved tasks data
