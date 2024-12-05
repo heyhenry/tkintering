@@ -37,6 +37,9 @@ remove_task_button.config(font=(24))
 remove_task_button.place(y=400, x=75)
 
 # clear all button
+clear_all_button = tk.Button(root, text='Clear All Tasks')
+clear_all_button.config(font=(24))
+clear_all_button.place(y=450, x=70)
 
 # display selected task
 # mark task as done
