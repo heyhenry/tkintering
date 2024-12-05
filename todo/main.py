@@ -1,4 +1,10 @@
 import tkinter as tk
+import json
+import os
+from task import Task
+
+savefile = 'tasks_save.json'
+tasks_dict = {}
 
 root = tk.Tk()
 root.title('To Do App.')
@@ -6,6 +12,18 @@ root.geometry('500x800')
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
+
+def load_tasks():
+    if os.path.exists(savefile):
+        with open(savefile, 'r') as file:
+            data = json.load(file)
+            for task_name, task_info in data.items():
+                tasks_dict[task_name] = Task(task_info['task_name'], task_info['task_status'])
+
+def populate_tasks_list():
+    load_tasks()
+    for i in tasks_dict.keys():
+        tasks.insert('end', i)
 
 # add task to the todo list
 def add_task():
@@ -48,5 +66,7 @@ remove_task_button.place(y=595, x=400)
 
 # interact with the list in the todo list and display selected task in the task display section 
 tasks.bind('<Button-1>', lambda mouse_event: display_task(mouse_event))
+
+populate_tasks_list()
 
 root.mainloop()
