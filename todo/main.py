@@ -11,6 +11,7 @@ task_check_var = tk.IntVar()
 def add_task():
     tasks.insert('end', task_var.get())
 
+# display selected task
 def display_task(mouse_event):
     selected_task.config(text=task_var.get())
 
@@ -40,6 +41,7 @@ selected_task.place(y=680, x=250, anchor='center', width=300, height=100)
 task_checkbox.place(y=600, x=30)
 remove_task.place(y=595, x=400)
 
+# interact with the list in the todo list and display selected task in the task display section 
 tasks.bind('<Button-1>', lambda mouse_event: display_task(mouse_event))
 
 root.mainloop()
