@@ -32,7 +32,10 @@ def add_task():
 # display selected task
 def display_task(mouse_event):
     for i in tasks.curselection():
+        # display the selected task's name
         selected_task.config(text=tasks.get(i))
+        # display the correct task status via the checkbutton
+        task_check_var.set(tasks_dict[tasks.get(i)].task_status)
 
 # remove selected task
 def remove_task():
