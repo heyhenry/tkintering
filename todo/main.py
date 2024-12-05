@@ -26,9 +26,11 @@ for vals in range(100):
     tasks.insert('end', vals)
 
 selected_task_subtitle = tk.Label(root, text='Selected Task:', font=(24))
-selected_task = tk.Label(root, textvariable=task_var, font=(24), wraplength=300)
+selected_task = tk.Label(root, text='jasdfkljasdklfjaklsdjflkajdfklajsdfkljaklsdfjkljasdfkljasdklfjaklsdjflkajdfklajsdfkljaklsdfjkljasdfkljasdklfjaklsdjflkajdfklajsdfkljaklsdfjkljasdfkljasdklfjaklsdjflkajdfklajsdfkljaklsdfjkljasdfkljasdklfjaklsdjflkajdfklajsdfkljaklsdfjkl', font=(24), wraplength=300)
+remove_task = tk.Button(root, text='Remove Task')
 
 selected_task_subtitle.place(y=600, x=200)
-selected_task.place(y=650, x=250, anchor='center')
+selected_task.place(y=680, x=250, anchor='center', width=300, height=100)
+remove_task.place(y=595, x=400)
 
 root.mainloop()
