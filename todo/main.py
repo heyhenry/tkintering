@@ -32,10 +32,15 @@ tasks_listbox.config(yscrollcommand=tasks_listbox_scrollbar.set)
 tasks_listbox_scrollbar.config(command=tasks_listbox.yview)
 
 # remove task
+remove_task_button = tk.Button(root, text='Remove Task')
+remove_task_button.config(font=(24))
+remove_task_button.place(y=400, x=75)
+
+# clear all button
 
 # display selected task
 # mark task as done
 
-# clear all button
+
 
 root.mainloop()
