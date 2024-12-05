@@ -7,9 +7,13 @@ root.geometry('500x800')
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
 
+# add task to the todo list
+def add_task():
+    tasks.insert('end', task_var.get())
+
 task_subtitle = tk.Label(root, text='Enter Task:', font=(18))
 task_entry = tk.Entry(root, textvariable=task_var, font=(18))
-submit_task = tk.Button(root, text='Add Task')
+submit_task = tk.Button(root, text='Add Task', command=add_task)
 
 task_subtitle.place(y=50, x=30)
 task_entry.place(y=50, x=120, width=270)
