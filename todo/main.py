@@ -21,6 +21,15 @@ def load_tasks():
             for task_name, task_info in data.items():
                 tasks_dict[task_name] = Task(task_info['task_name'], task_info['task_status'])
 
+# customised serializer for json
+def custom_serializer(obj):
+    if isinstance(obj, Task):
+        return {
+            "task_name": obj.task_name,
+            "task_status": obj.task_status
+        }
+    return obj
+
 def populate_tasks_list():
     load_tasks()
     for i in tasks_dict.keys():
