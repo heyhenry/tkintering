@@ -15,6 +15,7 @@ tasks_listbox = tk.Listbox(root)
 tasks_listbox.place(y=80, x=30, width=200, height=300)
 
 tasks_listbox_scrollbar = tk.Scrollbar(root)
+tasks_listbox_scrollbar.place(y=80, x=230, height=300)
 
 # remove task
 
