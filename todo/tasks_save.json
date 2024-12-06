@@ -1,18 +1,1 @@
-{
-    "Clean Bedroom": {
-        "task_name": "Clean Bedroom",
-        "task_status": "Uncompleted"
-    },
-    "Do Laundry": {
-        "task_name": "Do Laundry",
-        "task_status": "Uncompleted"
-    },
-    "Clean Kitchen": {
-        "task_name": "Clean Kitchen",
-        "task_status": "Uncompleted"
-    },
-    "Read 10 pages from The Alchemist": {
-        "task_name": "Read 10 pages from The Alchemist",
-        "task_status": "Uncompleted"
-    }
-}
+{}

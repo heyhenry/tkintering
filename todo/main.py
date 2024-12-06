@@ -79,8 +79,14 @@ def remove_task():
 
 # clear all existing tasks
 def clear_all_tasks():
+    # find out how many tasks exists
     total_tasks_count = tasks_listbox.size()
+    # delete all the tasks via  (first to last)
     tasks_listbox.delete(0, total_tasks_count)
+    # clear the whole tasks list dictionary
+    tasks_list.clear()    
+    # update the save file 
+    update_savefile()
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
