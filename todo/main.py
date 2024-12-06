@@ -36,8 +36,14 @@ root = tk.Tk()
 root.title('To Do App.')
 root.geometry('800x600')
 
+def create_task():
+    tasks_list[task_var.get()] = Task(task_var.get(), 'Uncompleted')
+    update_savefile()
+
+# add a task to the listbox
 def add_task():
     tasks_listbox.insert('end', task_var.get())
+    create_task()
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
