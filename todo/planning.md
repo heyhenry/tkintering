@@ -3,9 +3,9 @@
 
 # to implement:
 - Validation to restrict length of inputted task
-- Create task object for saving purposes (task_name = 'Clean bedroom', task_status = 'Completed' / 'Incompleted')
-- Create task dictionary to store saved tasks data
-- Create savefile for tasks
+- Create task object for saving purposes (task_name = 'Clean bedroom', task_status = 'Completed' / 'Incompleted') x
+- Create task dictionary to store saved tasks data x
+- Create savefile for tasks x
 - Implement load save file function
 - Implement update save file function
 - Implement custom serializer function

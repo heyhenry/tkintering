@@ -36,6 +36,9 @@ root = tk.Tk()
 root.title('To Do App.')
 root.geometry('800x600')
 
+def add_task():
+    tasks_listbox.insert('end', task_var.get())
+
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
 
@@ -46,7 +49,7 @@ task_enter_title.place(y=50, x=300)
 task_enter_prompt = tk.Entry(root, textvariable=task_var, font=(24))
 task_enter_prompt.place(y=50, x=400, width=300)
 # add task button
-task_add_button = tk.Button(root, text='Add Task')
+task_add_button = tk.Button(root, text='Add Task', command=add_task)
 task_add_button.place(y=48, x=710)
 
 # listbox for added tasks
