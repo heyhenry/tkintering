@@ -53,8 +53,16 @@ def add_task():
 
 # remove task from the listbox
 def remove_task():
+    task_name = ''
     for i in tasks_listbox.curselection():
+        # update the task_name variable's value with selected task
+        task_name = tasks_listbox.get(i)
+        # delete the selected task from the listbox
         tasks_listbox.delete(i)
+    # delete the selected task from the tasks list dictionary
+    del tasks_list[task_name]
+    # update the save file to reflect the removal of the selected task
+    update_savefile()
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
