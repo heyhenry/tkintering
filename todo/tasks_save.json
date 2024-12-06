@@ -1,6 +1,6 @@
 {
     "Clean Bedroom": {
-        "Task Name": "Clean Bedroom",
-        "Task Status": "Uncompleted"
+        "task_name": "Clean Bedroom",
+        "task_status": "Uncompleted"
     }
 }

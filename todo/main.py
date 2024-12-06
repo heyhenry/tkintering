@@ -19,8 +19,8 @@ def load_saved_tasks():
 def custom_serializer(obj):
     if isinstance(obj, Task):
         return {
-            "Task Name": obj.task_name,
-            "Task Status": obj.task_status
+            "task_name": obj.task_name,
+            "task_status": obj.task_status
         }
     return obj
 
@@ -36,6 +36,12 @@ root = tk.Tk()
 root.title('To Do App.')
 root.geometry('800x600')
 
+# load saved tasks to the listbox
+def load_tasks_to_listbox():
+    for task_name in tasks_list.keys():
+        tasks_listbox.insert('end', task_name)
+
+# create a task and save it
 def create_task():
     tasks_list[task_var.get()] = Task(task_var.get(), 'Uncompleted')
     update_savefile()
@@ -92,5 +98,8 @@ selected_task_name.place(y=120, x=450)
 # mark task as done
 selected_task_checkbutton = tk.Checkbutton(root, text='Task Completed', variable=task_check_var, onvalue=1, offvalue=0, font=(24))
 selected_task_checkbutton.place(y=180, x=400)
+
+# functions to be run at startup
+load_tasks_to_listbox()
 
 root.mainloop()
