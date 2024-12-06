@@ -1,5 +1,21 @@
 # a simple todo app
 import tkinter as tk
+import json
+import os
+from task import Task
+
+savefile = 'tasks_save.json'
+tasks_list = {}
+
+# load saved data of tasks
+def load_saved_tasks():
+    if os.path.exists(savefile):
+        with open(savefile, 'r') as file:
+            save_data = json.load(file)
+            for task_name, task_info in save_data.items():
+                tasks_list[task_name] = Task(task_info['task_name'], task_info['task_status'])
+
+load_saved_tasks()
 
 root = tk.Tk()
 root.title('To Do App.')
