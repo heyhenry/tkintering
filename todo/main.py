@@ -24,6 +24,12 @@ def custom_serializer(obj):
         }
     return obj
 
+# update the save file for tasks
+def update_savefile():
+    save_data = json.dumps(tasks_list, indent=4, default=custom_serializer)
+    with open(savefile, 'w') as outfile:
+        outfile.write(save_data)
+
 load_saved_tasks()
 
 root = tk.Tk()
