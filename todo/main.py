@@ -41,7 +41,7 @@ def load_tasks_to_listbox():
     for task_name in tasks_list.keys():
         tasks_listbox.insert('end', task_name)
 
-# create a task and save it
+# create a task
 def create_task():
     tasks_list[task_var.get()] = Task(task_var.get(), 'Uncompleted')
     update_savefile()
@@ -50,6 +50,11 @@ def create_task():
 def add_task():
     tasks_listbox.insert('end', task_var.get())
     create_task()
+
+# remove task from the listbox
+def remove_task():
+    for i in tasks_listbox.curselection():
+        tasks_listbox.delete(i)
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
@@ -79,7 +84,7 @@ tasks_listbox.config(yscrollcommand=tasks_listbox_scrollbar.set)
 tasks_listbox_scrollbar.config(command=tasks_listbox.yview)
 
 # remove task
-remove_task_button = tk.Button(root, text='Remove Task')
+remove_task_button = tk.Button(root, text='Remove Task', command=remove_task)
 remove_task_button.config(font=(24))
 remove_task_button.place(y=400, x=75)
 
