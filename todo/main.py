@@ -9,14 +9,19 @@ tasks_list = {}
 
 # load saved data of tasks
 def load_saved_tasks():
+    # check to see if the save file exists
     if os.path.exists(savefile):
+        # open the found save file
         with open(savefile, 'r') as file:
+            # load the json data into a variable
             save_data = json.load(file)
+            # loop through the json data and insert into the local tasks list dictionary
             for task_name, task_info in save_data.items():
                 tasks_list[task_name] = Task(task_info['task_name'], task_info['task_status'])
 
 # created a customised serailizer for json parsing
 def custom_serializer(obj):
+    # json format for the task object
     if isinstance(obj, Task):
         return {
             "task_name": obj.task_name,
@@ -26,7 +31,9 @@ def custom_serializer(obj):
 
 # update the save file for tasks
 def update_savefile():
+    # create the json object for the save file
     save_data = json.dumps(tasks_list, indent=4, default=custom_serializer)
+    # write the new json data to the save file
     with open(savefile, 'w') as outfile:
         outfile.write(save_data)
 
@@ -38,17 +45,23 @@ root.geometry('800x600')
 
 # load saved tasks to the listbox
 def load_tasks_to_listbox():
+    # loop through the existing tasks via their key (task names)
     for task_name in tasks_list.keys():
+        # add each existing task to the listbox
         tasks_listbox.insert('end', task_name)
 
 # create a task
 def create_task():
+    # added the new task to the existing tasks list dictionary
     tasks_list[task_var.get()] = Task(task_var.get(), 'Uncompleted')
+    # update the save file to reflect the addition of the new task
     update_savefile()
 
 # add a task to the listbox
 def add_task():
+    # add the task to the listbox
     tasks_listbox.insert('end', task_var.get())
+    # create the task
     create_task()
 
 # remove task from the listbox
