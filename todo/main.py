@@ -15,6 +15,15 @@ def load_saved_tasks():
             for task_name, task_info in save_data.items():
                 tasks_list[task_name] = Task(task_info['task_name'], task_info['task_status'])
 
+# created a customised serailizer for json parsing
+def custom_serializer(obj):
+    if isinstance(obj, Task):
+        return {
+            "Task Name": obj.task_name,
+            "Task Status": obj.task_status
+        }
+    return obj
+
 load_saved_tasks()
 
 root = tk.Tk()
