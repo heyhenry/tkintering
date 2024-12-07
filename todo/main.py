@@ -59,23 +59,24 @@ def create_task():
 
 # add a task to the listbox
 def add_task():
-    validate_new_task()
-    # add the task to the listbox
-    tasks_listbox.insert('end', task_var.get())
-    # create the task
-    create_task()
+    task_error_message.config(text='')
+    if validate_new_task():
+        # add the task to the listbox
+        tasks_listbox.insert('end', task_var.get())
+        # create the task
+        create_task()
 
 # check if task has an appropriate string length
 def validate_new_task():
+    # ensure the length of the task is not too long
     if len(task_var.get()) > 26:
-        print('too long')
-        # return False
+        task_error_message.config(text='Too many characters.')
+        return False
+    # ensure that the user has not only entered an 'empty' task
     elif len(task_var.get()) * ' ' == task_var.get():   
-        print('all white spaces')
-        # return False
-    print('you pass')
-    # return True
-
+        task_error_message.config(text='White spaces only not allowed.')
+        return False
+    return True
 
 # remove task from the listbox
 def remove_task():
