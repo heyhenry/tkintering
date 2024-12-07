@@ -102,21 +102,28 @@ def clear_all_tasks():
     # update the save file 
     update_savefile()
 
+# update a task's status
 def update_task_status():
     task_name = ''
+    # find the selected item's name
     for i in tasks_listbox.curselection():
         task_name = tasks_listbox.get(i)
+    # update the task's status in the local tasks list dictionary to the respective value based on checkbutton value
     if task_check_var.get() == 1:
         tasks_list[task_name].task_status = 'Completed'
     else:
         tasks_list[task_name].task_status = 'Uncompleted'
+    # update the save file with latest data
     update_savefile()
 
+# display the information for selected task
 def display_selected_task_info(mouse_event):
     task_name = ''
+    # find the selected item's name
     for i in tasks_listbox.curselection():
         task_name = tasks_listbox.get(i)
     selected_task_name.config(text=task_name)
+    # reference the given value for the status and set checkbutton value accordingly
     if tasks_list[task_name].task_status == 'Completed':
         task_check_var.set(1)
     else:
@@ -172,7 +179,7 @@ selected_task_name = tk.Label(root, text='Deep Clean Bedroom', font=(24)) # <-- 
 selected_task_name.place(y=120, x=450)
 
 # mark task as done
-selected_task_checkbutton = tk.Checkbutton(root, text='Task Completed', variable=task_check_var, onvalue=1, offvalue=0, font=(24))
+selected_task_checkbutton = tk.Checkbutton(root, text='Task Completed', variable=task_check_var, onvalue=1, offvalue=0, font=(24), command=update_task_status)
 selected_task_checkbutton.place(y=180, x=400)
 
 # functions to be run at startup
