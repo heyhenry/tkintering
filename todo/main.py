@@ -110,6 +110,11 @@ task_enter_title.place(y=50, x=300)
 
 task_enter_prompt = tk.Entry(root, textvariable=task_var, font=(24))
 task_enter_prompt.place(y=50, x=400, width=300)
+
+# error message prompt
+task_error_message = tk.Label(root, foreground='red', font=(24))
+task_error_message.place(y=70, x=400)
+
 # add task button
 task_add_button = tk.Button(root, text='Add Task', command=add_task)
 task_add_button.place(y=48, x=710)
