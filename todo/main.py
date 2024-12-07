@@ -59,10 +59,23 @@ def create_task():
 
 # add a task to the listbox
 def add_task():
+    validate_new_task()
     # add the task to the listbox
     tasks_listbox.insert('end', task_var.get())
     # create the task
     create_task()
+
+# check if task has an appropriate string length
+def validate_new_task():
+    if len(task_var.get()) > 26:
+        print('too long')
+        # return False
+    elif len(task_var.get()) * ' ' == task_var.get():   
+        print('all white spaces')
+        # return False
+    print('you pass')
+    # return True
+
 
 # remove task from the listbox
 def remove_task():

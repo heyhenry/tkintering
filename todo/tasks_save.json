@@ -1,1 +1,26 @@
-{}
+{
+    "Watering the Plants": {
+        "task_name": "Watering the Plants",
+        "task_status": "Uncompleted"
+    },
+    "Doing a gym session in the evening": {
+        "task_name": "Doing a gym session in the evening",
+        "task_status": "Uncompleted"
+    },
+    "DOING A GYM SESSION IN THE EVENING": {
+        "task_name": "DOING A GYM SESSION IN THE EVENING",
+        "task_status": "Uncompleted"
+    },
+    "Doing a gym session in thes": {
+        "task_name": "Doing a gym session in thes",
+        "task_status": "Uncompleted"
+    },
+    "Doing a gym session in the": {
+        "task_name": "Doing a gym session in the",
+        "task_status": "Uncompleted"
+    },
+    "             ": {
+        "task_name": "             ",
+        "task_status": "Uncompleted"
+    }
+}
