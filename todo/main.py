@@ -110,7 +110,17 @@ def update_task_status():
         tasks_list[task_name].task_status = 'Completed'
     else:
         tasks_list[task_name].task_status = 'Uncompleted'
-    print(tasks_list[task_name].task_status)
+    update_savefile()
+
+def display_selected_task_info(mouse_event):
+    task_name = ''
+    for i in tasks_listbox.curselection():
+        task_name = tasks_listbox.get(i)
+    selected_task_name.config(text=task_name)
+    if tasks_list[task_name].task_status == 'Completed':
+        task_check_var.set(1)
+    else:
+        task_check_var.set(0)
 
 task_var = tk.StringVar()
 task_check_var = tk.IntVar()
@@ -162,10 +172,13 @@ selected_task_name = tk.Label(root, text='Deep Clean Bedroom', font=(24)) # <-- 
 selected_task_name.place(y=120, x=450)
 
 # mark task as done
-selected_task_checkbutton = tk.Checkbutton(root, text='Task Completed', variable=task_check_var, onvalue=1, offvalue=0, font=(24), command=update_task_status)
+selected_task_checkbutton = tk.Checkbutton(root, text='Task Completed', variable=task_check_var, onvalue=1, offvalue=0, font=(24))
 selected_task_checkbutton.place(y=180, x=400)
 
 # functions to be run at startup
 load_tasks_to_listbox()
+
+# bindings
+tasks_listbox.bind("<<ListboxSelect>>", lambda mouse_event: display_selected_task_info(mouse_event))
 
 root.mainloop()

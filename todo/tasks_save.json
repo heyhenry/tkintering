@@ -1,7 +1,7 @@
 {
     "Watering the Plants": {
         "task_name": "Watering the Plants",
-        "task_status": "Uncompleted"
+        "task_status": "Completed"
     },
     "Doing a gym session in the evening": {
         "task_name": "Doing a gym session in the evening",
@@ -9,7 +9,7 @@
     },
     "DOING A GYM SESSION IN THE EVENING": {
         "task_name": "DOING A GYM SESSION IN THE EVENING",
-        "task_status": "Uncompleted"
+        "task_status": "Completed"
     },
     "Doing a gym session in thes": {
         "task_name": "Doing a gym session in thes",
@@ -17,7 +17,7 @@
     },
     "Doing a gym session in the": {
         "task_name": "Doing a gym session in the",
-        "task_status": "Uncompleted"
+        "task_status": "Completed"
     },
     "sd": {
         "task_name": "sd",
@@ -25,7 +25,7 @@
     },
     "water the garden": {
         "task_name": "water the garden",
-        "task_status": "Uncompleted"
+        "task_status": "Completed"
     },
     "fish with grandpa": {
         "task_name": "fish with grandpa",
