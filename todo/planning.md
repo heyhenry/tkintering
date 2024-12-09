@@ -11,6 +11,6 @@
 - Implement custom serializer function x
 - Implement remove task function (and update the save file) x
 - Implement clear all tasks function (and save an empty save file) x
-- Update save file if checkbutton's state is changed and does not reflect the current savefile
+- Update save file if checkbutton's state is changed and does not reflect the current savefile x
 - Display added/saved tasks to the listbox x
-- Display selected task's name and task status (via text saying either Completed or Incompleted and checkbox reflects text)
+- Display selected task's name and task status (via text saying either Completed or Incompleted and checkbox reflects text) x
