@@ -7,14 +7,19 @@ root = tk.Tk()
 # add number
 def add():
     global result
-    result += user_input_var.get()
+    result += float(user_input_var.get())
+    user_input_var.set(result)
+
+def subtract():
+    global result
+    result -= float(user_input_var.get())
     user_input_var.set(result)
 
 # update the user_input_var variable's num value based on button pressed
 def update_user_input_var_value(mouse_event, num):
     user_input_var.set(num)
 
-user_input_var = tk.IntVar()
+user_input_var = tk.StringVar()
 
 button_params = {'font': ('helvetica', 24), 'width': 5}
 
@@ -46,7 +51,7 @@ empty_one.grid(row=2, column=4)
 number_one = tk.Button(root, text='1', **button_params)
 number_two = tk.Button(root, text='2', **button_params)
 number_three = tk.Button(root, text='3', **button_params)
-subtract_operator = tk.Button(root, text='-', **button_params)
+subtract_operator = tk.Button(root, text='-', **button_params, command=subtract)
 empty_two = tk.Button(root, text='', **button_params, state='disabled')
 number_one.grid(row=3, column=0)
 number_two.grid(row=3, column=1)
@@ -75,5 +80,7 @@ number_one.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mo
 number_two.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 2))
 number_three.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 3))
 number_zero.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 0))
+
+# addition_operator.bind("<Button-1>", )
 
 root.mainloop()
