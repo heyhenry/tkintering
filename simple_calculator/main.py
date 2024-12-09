@@ -1,8 +1,20 @@
 import tkinter as tk
 
+result = 0
+
 root = tk.Tk()
 
-user_input_var = tk.StringVar()
+# add number
+def add():
+    global result
+    result += user_input_var.get()
+    user_input_var.set(result)
+
+# update the user_input_var variable's num value based on button pressed
+def update_user_input_var_value(mouse_event, num):
+    user_input_var.set(num)
+
+user_input_var = tk.IntVar()
 
 button_params = {'font': ('helvetica', 24), 'width': 5}
 
@@ -13,7 +25,7 @@ number_seven = tk.Button(root, text='7', **button_params)
 number_eight = tk.Button(root, text='8', **button_params)
 number_nine = tk.Button(root, text='9', **button_params)
 division_operator = tk.Button(root, text='/', **button_params)
-addition_operator= tk.Button(root, text='+', **button_params)
+addition_operator= tk.Button(root, text='+', **button_params, command=add)
 number_seven.grid(row=1, column=0)
 number_eight.grid(row=1, column=1)
 number_nine.grid(row=1, column=2)
@@ -52,5 +64,16 @@ number_zero.grid(row=4, column=1)
 equals_sign.grid(row=4, column=2)
 clear_sign.grid(row=4, column=3)
 all_clear_sign.grid(row=4, column=4)
+
+number_seven.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 7))
+number_eight.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 8))
+number_nine.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 9))
+number_four.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 4))
+number_five.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 5))
+number_six.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 6))
+number_one.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 1))
+number_two.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 2))
+number_three.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 3))
+number_zero.bind("<Button-1>", lambda mouse_event: update_user_input_var_value(mouse_event, 0))
 
 root.mainloop()
