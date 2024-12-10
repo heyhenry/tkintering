@@ -8,10 +8,13 @@ root = tk.Tk()
 # get the user input values to create the equation
 def get_equation(mouse_event, val):
     global equation
+    # to show the value the user has inputted
     user_input_var.set(val)
+    # update the equation list
     equation.append(val)
     print(equation)
 
+# to display the equation in realtime (work in progress)
 def display_equation_realtime():
     global result
     for i in equation:
@@ -21,12 +24,14 @@ def display_equation_realtime():
 # remove the last user input from the equation
 def backspace_an_input():
     global equation
+    # remove the last element in the equation list
     equation.pop()
     print(equation)
 
 # clear the whole equation
 def clear_all_equation():
     global equation
+    # clear the whole equation list
     equation.clear()
     print(equation)
 
@@ -108,5 +113,6 @@ division_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_even
 addition_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '+'))
 multiplier_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '*'))
 subtract_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '-'))
+
 
 root.mainloop()
