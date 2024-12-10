@@ -9,14 +9,11 @@ root = tk.Tk()
 # get the user input values to create the equation
 def get_equation(mouse_event, val):
     global equation
-    if val not in ['=', 'C', 'AC']:
-        # to show the value the user has inputted
-        user_input_var.set(val)
-        # update the equation list
-        equation.append(val)
-        display_working_equation()
-    elif val == '=':
-        calculate_equation()
+    # to show the value the user has inputted
+    user_input_var.set(val)
+    # update the equation list
+    equation.append(val)
+    display_working_equation()
 
 # remove the last user input from the equation
 def backspace_an_input():
@@ -30,6 +27,7 @@ def clear_all_equation():
     global equation
     # clear the whole equation list
     equation.clear()
+    user_input_var.set('')
     display_working_equation()
 
 # show the equation and its result
@@ -98,9 +96,9 @@ empty_two.grid(row=4, column=4)
 
 decimal_point = tk.Button(root, text='.', **button_params)
 number_zero = tk.Button(root, text='0', **button_params)
-equals_sign = tk.Button(root, text='=', **button_params)
-clear_sign = tk.Button(root, text='C', **button_params)
-all_clear_sign = tk.Button(root, text='AC', **button_params)
+equals_sign = tk.Button(root, text='=', **button_params, command=calculate_equation)
+clear_sign = tk.Button(root, text='C', **button_params, command=backspace_an_input)
+all_clear_sign = tk.Button(root, text='AC', **button_params, command=clear_all_equation)
 decimal_point.grid(row=5, column=0)
 number_zero.grid(row=5, column=1)
 equals_sign.grid(row=5, column=2)
@@ -122,8 +120,6 @@ division_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_even
 addition_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '+'))
 multiplier_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '*'))
 subtract_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '-'))
-
-equals_sign.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '='))
 
 display_equation_var.trace_add('write', display_working_equation)
 
