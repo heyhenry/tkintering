@@ -33,11 +33,18 @@ def clear_all_equation():
 # show the equation and its result
 def calculate_equation():
     global result
+    global trace_id
     result = ''
     for i in equation:
         result += i
     # set the evaluation result of the given equation
     user_input_var.set(eval(result))
+    # disable the trace temporarily
+    display_equation_var.trace_remove('write', trace_id)
+    # display the current working_equation's value with the addition of the '='
+    display_equation_var.set(working_equation + ' =')
+    # renable the trace 
+    trace_id = display_equation_var.trace_add('write', display_working_equation)
 
 # displays the equation in realtime within the app
 def display_working_equation(*args):
@@ -122,6 +129,6 @@ addition_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_even
 multiplier_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '*'))
 subtract_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '-'))
 
-display_equation_var.trace_add('write', display_working_equation)
+trace_id = display_equation_var.trace_add('write', display_working_equation)
 
 root.mainloop()
