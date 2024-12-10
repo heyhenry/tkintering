@@ -9,6 +9,13 @@ root = tk.Tk()
 def get_equation(mouse_event, val):
     global equation
     equation.append(val)
+    print(equation)
+
+# remove the last user input from the equation
+def backspace_an_input():
+    global equation
+    equation.pop()
+    print(equation)
 
 # show the equation and its result
 def display_equation():
@@ -61,7 +68,7 @@ empty_two.grid(row=3, column=4)
 decimal_point = tk.Button(root, text='.', **button_params)
 number_zero = tk.Button(root, text='0', **button_params)
 equals_sign = tk.Button(root, text='=', **button_params, command=display_equation)
-clear_sign = tk.Button(root, text='C', **button_params)
+clear_sign = tk.Button(root, text='C', **button_params, command=backspace_an_input)
 all_clear_sign = tk.Button(root, text='AC', **button_params)
 decimal_point.grid(row=4, column=0)
 number_zero.grid(row=4, column=1)
