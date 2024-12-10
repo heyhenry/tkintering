@@ -9,37 +9,40 @@ root = tk.Tk()
 # get the user input values to create the equation
 def get_equation(mouse_event, val):
     global equation
-    # global working_equation
-    # to show the value the user has inputted
-    user_input_var.set(val)
-    # update the equation list
-    equation.append(val)
-    print_equation()
+    if val not in ['=', 'C', 'AC']:
+        # to show the value the user has inputted
+        user_input_var.set(val)
+        # update the equation list
+        equation.append(val)
+        display_working_equation()
+    elif val == '=':
+        calculate_equation()
 
 # remove the last user input from the equation
 def backspace_an_input():
     global equation
     # remove the last element in the equation list
     equation.pop()
-    print_equation()
+    display_working_equation()
 
 # clear the whole equation
 def clear_all_equation():
     global equation
     # clear the whole equation list
     equation.clear()
-    print_equation()
+    display_working_equation()
 
 # show the equation and its result
 def calculate_equation():
-    print(equation)
     global result
+    result = ''
     for i in equation:
         result += i
-    print(eval(result))
+    # set the evaluation result of the given equation
+    user_input_var.set(eval(result))
 
 # displays the equation in realtime within the app
-def print_equation(*args):
+def display_working_equation(*args):
     global working_equation
     # clean slate the working_equation variable for the latest equation list (with no previous versions attached)
     working_equation = ''
@@ -48,7 +51,7 @@ def print_equation(*args):
         working_equation += i
     # set the entry's showcasing variable with the latest equation updates
     display_equation_var.set(str(working_equation))
-    
+
 display_equation_var = tk.StringVar()
 user_input_var = tk.StringVar()
 
@@ -95,9 +98,9 @@ empty_two.grid(row=4, column=4)
 
 decimal_point = tk.Button(root, text='.', **button_params)
 number_zero = tk.Button(root, text='0', **button_params)
-equals_sign = tk.Button(root, text='=', **button_params, command=calculate_equation)
-clear_sign = tk.Button(root, text='C', **button_params, command=backspace_an_input)
-all_clear_sign = tk.Button(root, text='AC', **button_params, command=clear_all_equation)
+equals_sign = tk.Button(root, text='=', **button_params)
+clear_sign = tk.Button(root, text='C', **button_params)
+all_clear_sign = tk.Button(root, text='AC', **button_params)
 decimal_point.grid(row=5, column=0)
 number_zero.grid(row=5, column=1)
 equals_sign.grid(row=5, column=2)
@@ -120,6 +123,8 @@ addition_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_even
 multiplier_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '*'))
 subtract_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '-'))
 
-display_equation_var.trace_add('write', print_equation)
+equals_sign.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '='))
+
+display_equation_var.trace_add('write', display_working_equation)
 
 root.mainloop()
