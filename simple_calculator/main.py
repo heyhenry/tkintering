@@ -1,6 +1,7 @@
 import tkinter as tk
 
 result = ''
+working_equation = ''
 equation = []
 
 root = tk.Tk()
@@ -8,32 +9,26 @@ root = tk.Tk()
 # get the user input values to create the equation
 def get_equation(mouse_event, val):
     global equation
+    # global working_equation
     # to show the value the user has inputted
     user_input_var.set(val)
     # update the equation list
     equation.append(val)
-    print(equation)
-
-# to display the equation in realtime (work in progress)
-def display_equation_realtime():
-    global result
-    for i in equation:
-        result += i 
-    display_equation_var.set(result)
+    print_equation()
 
 # remove the last user input from the equation
 def backspace_an_input():
     global equation
     # remove the last element in the equation list
     equation.pop()
-    print(equation)
+    print_equation()
 
 # clear the whole equation
 def clear_all_equation():
     global equation
     # clear the whole equation list
     equation.clear()
-    print(equation)
+    print_equation()
 
 # show the equation and its result
 def calculate_equation():
@@ -43,6 +38,17 @@ def calculate_equation():
         result += i
     print(eval(result))
 
+# displays the equation in realtime within the app
+def print_equation(*args):
+    global working_equation
+    # clean slate the working_equation variable for the latest equation list (with no previous versions attached)
+    working_equation = ''
+    # append the latest equation to the working_equation variable
+    for i in equation:
+        working_equation += i
+    # set the entry's showcasing variable with the latest equation updates
+    display_equation_var.set(str(working_equation))
+    
 display_equation_var = tk.StringVar()
 user_input_var = tk.StringVar()
 
@@ -114,5 +120,6 @@ addition_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_even
 multiplier_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '*'))
 subtract_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '-'))
 
+display_equation_var.trace_add('write', print_equation)
 
 root.mainloop()
