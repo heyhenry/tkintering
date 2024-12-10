@@ -115,6 +115,7 @@ number_one.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '1')
 number_two.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '2'))
 number_three.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '3'))
 number_zero.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '0'))
+decimal_point.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '.'))
 
 division_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '/'))
 addition_operator.bind("<Button-1>", lambda mouse_event: get_equation(mouse_event, '+'))
