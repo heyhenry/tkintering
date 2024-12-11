@@ -48,6 +48,7 @@ def calculate_equation():
         # renable the trace 
         trace_id = display_equation_var.trace_add('write', display_working_equation)
     else:
+        # dev choice: decided not to display any error message akin to the desktop default calculator
         # reset user input and equation display variables
         display_equation_var.trace_remove('write', trace_id)
         display_equation_var.set('')
@@ -70,10 +71,10 @@ user_input_var = tk.StringVar()
 
 button_params = {'font': ('helvetica', 24), 'width': 5}
 
-display_equation_field = tk.Entry(root, textvariable=display_equation_var, font=('helvetica', 18))
+display_equation_field = tk.Entry(root, textvariable=display_equation_var, font=('helvetica', 18), width=40, borderwidth=0, justify='right')
 display_equation_field.grid(row=0, columnspan=5)
 
-input_field = tk.Entry(root, textvariable=user_input_var, font=('helvetica', 35))
+input_field = tk.Entry(root, textvariable=user_input_var, font=('helvetica', 35), borderwidth=0, justify='right')
 input_field.grid(row=1, columnspan=5)
 
 number_seven = tk.Button(root, text='7', **button_params)
