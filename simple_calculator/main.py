@@ -35,16 +35,24 @@ def calculate_equation():
     global result
     global trace_id
     result = ''
-    for i in equation:
-        result += i
-    # set the evaluation result of the given equation
-    user_input_var.set(eval(result))
-    # disable the trace temporarily
-    display_equation_var.trace_remove('write', trace_id)
-    # display the current working_equation's value with the addition of the '='
-    display_equation_var.set(working_equation + ' =')
-    # renable the trace 
-    trace_id = display_equation_var.trace_add('write', display_working_equation)
+    if equation[-1].isdigit():
+        # add the equation values as an evaluable string
+        for i in equation:
+            result += i
+        # set the evaluation result of the given equation
+        user_input_var.set(eval(result))
+        # disable the trace temporarily
+        display_equation_var.trace_remove('write', trace_id)
+        # display the current working_equation's value with the addition of the '='
+        display_equation_var.set(working_equation + ' =')
+        # renable the trace 
+        trace_id = display_equation_var.trace_add('write', display_working_equation)
+    else:
+        # reset user input and equation display variables
+        display_equation_var.trace_remove('write', trace_id)
+        display_equation_var.set('')
+        trace_id = display_equation_var.trace_add('write', display_working_equation)
+        user_input_var.set('')
 
 # displays the equation in realtime within the app
 def display_working_equation(*args):
