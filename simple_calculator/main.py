@@ -18,9 +18,11 @@ def get_equation(mouse_event, val):
 # remove the last user input from the equation
 def backspace_an_input():
     global equation
-    # remove the last element in the equation list
-    equation.pop()
-    display_working_equation()
+    # ensures that only valid elements are removed from the equation
+    if len(equation) > 0:
+        # remove the last element in the equation list
+        equation.pop()
+        display_working_equation()
 
 # clear the whole equation
 def clear_all_equation():
